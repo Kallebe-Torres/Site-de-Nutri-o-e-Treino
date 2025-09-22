@@ -1,0 +1,128 @@
+/* Estilos Gerais */
+:root {
+  --color1: #00ccbe;
+  --color2: #09a6a3;
+  --color3: #9dbfaf;
+  --color4: #edebc9;
+  --color5: #fcf9d8;
+}
+
+/* Seção de Planos */
+.plans {
+  min-height: 100vh; /* Ocupa a altura total da tela */
+  padding: 100px 20px;
+  background: #fefefe;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza o conteúdo verticalmente */
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+}
+
+.plans .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.plans h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* Layout dos Cards */
+.plans .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  align-items: stretch;
+}
+
+.plans .plan {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #eee;
+}
+
+.plans .plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plans .plan.destaque {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.plans .plan.destaque h3,
+.plans .plan.destaque .description-small {
+  color: #fff;
+}
+
+.description-small {
+  /* Esta propriedade não precisa de padding, pois o padding do `.plan` já lida com o espaçamento. */
+  margin: 15px 0; /* Adiciona uma margem para separar do preço e do botão */
+  font-size: 14px;
+}
+
+/* Preço */
+.plans .price {
+  margin: 20px 0;
+}
+
+.plans .price .value {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.plans .plan.destaque .price .value {
+  color: #fff;
+}
+
+.plans .price .period {
+  font-size: 1rem;
+  color: #888;
+}
+
+.plans .plan.destaque .price .period {
+  color: #f0f0f0;
+}
+
+/* Botão */
+.plans .btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-transform: uppercase;
+  margin-top: auto;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.plans .btn:hover {
+  background-color: #0056b3;
+}
+
+.plans .plan.destaque .btn {
+  background-color: #fff;
+  color: #007bff;
+}
+
+.plans .plan.destaque .btn:hover {
+  background-color: #e9ecef;
+}

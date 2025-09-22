@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dieta/dieta.css" />
+    <title>Minha Dieta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              "primary-green": "#388e3c",
+              "light-green": "#f0f8f0",
+              "dark-teal": "#008080",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 font-sans text-gray-800 flex flex-col min-h-screen">
+    <nav id="navbar">
+      <div class="logo-container">
+        <img src="img/abacate.png" alt="Logo" class="logo-img" />
+        <div class="logo">AvoGym</div>
+      </div>
+
+      <ul id="nav_list">
+        <li class="nav-item active">
+          <a href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#funcionalidades">Funcionalidades</a>
+        </li>
+
+        <li class="nav-item"><a href="#planos">Planos</a></li>
+
+        <li class="nav-item">
+          <a href="#contato">Contato</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="flex-grow pt-8 pb-24">
+      <div class="container mx-auto px-4 flex flex-col items-center">
+        <div class="w-full max-w-lg mb-6 text-center">
+          <h1
+            class="text-3xl font-extrabold text-primary-green bg-white py-4 rounded-xl shadow-lg"
+          >
+            Dieta
+          </h1>
+          <p class="text-lg text-gray-700 mt-2">
+            <span
+              class="font-semibold text-primary-green"
+              id="tipo-dieta"
+            ></span>
+          </p>
+        </div>
+
+        <section
+          class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center w-full max-w-lg mb-8"
+        >
+          <p class="text-lg text-gray-700 mb-4">
+            Objetivo:
+            <span
+              id="objetivo-dieta"
+              class="font-semibold text-primary-green"
+            ></span>
+          </p>
+          <a href="criarPlano.html" id="criar-plano-btn"
+            class="bg-primary-green text-white font-semibold py-3 px-8 rounded-full shadow-md hover:bg-green-700 transition duration-300"
+          >Criar plano</a>
+        </section>
+
+        <section class="grid grid-cols-2 gap-4 w-full max-w-lg">
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden text-center"
+          >
+            <img
+              src="img/cafe-da-manha.jpg"
+              alt="Café da manhã"
+              class="w-full h-32 object-cover"
+            />
+            <h3 class="text-lg font-semibold py-3">Café da manhã</h3>
+          </div>
+
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden text-center"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixid=M3w0NTQ3NzR8MHwxfHNlYXJjaHw3fHxiaXJkcyUyMGV5ZXMlMjBuZXN0fGVufDB8fHx8MTcxMzIzNTgwOHwxNg&ixlib=rb-4.0.3&fm=jpg&crop=entropy&cs=tinysrgb"
+              alt="Almoço"
+              class="w-full h-32 object-cover"
+            />
+            <h3 class="text-lg font-semibold py-3">Almoço</h3>
+          </div>
+
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden text-center"
+          >
+            <img
+              src="img/lanche.jpeg"
+              alt="Lanche"
+              class="w-full h-32 object-cover"
+            />
+
+            <h3 class="text-lg font-semibold py-3">Lanche</h3>
+          </div>
+
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden text-center"
+          >
+            <img
+              src="img/janta.jpeg"
+              alt="Jantar"
+              class="w-full h-32 object-cover"
+            />
+
+            <h3 class="text-lg font-semibold py-3">Jantar</h3>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <nav class="fixed bottom-0 left-0 w-full bg-white shadow-lg md:hidden z-50">
+      <div class="flex justify-around py-3">
+        <a
+          href="#"
+          class="text-gray-500 hover:text-primary-green transition duration-300"
+        >
+          <i class="fas fa-home text-2xl"></i>
+        </a>
+
+        <a
+          href="#"
+          class="text-gray-500 hover:text-primary-green transition duration-300"
+        >
+          <i class="fas fa-fire text-2xl"></i>
+        </a>
+
+        <a
+          href="#"
+          class="text-gray-500 hover:text-primary-green transition duration-300"
+        >
+          <i class="fas fa-dumbbell text-2xl"></i>
+        </a>
+
+        <a
+          href="#"
+          class="text-gray-500 hover:text-primary-green transition duration-300"
+        >
+          <i class="fas fa-user text-2xl"></i>
+        </a>
+      </div>
+    </nav>
+    <script src="js/verificardados.js"></script>
+  </body>
+</html>

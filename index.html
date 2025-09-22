@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AvoGym - Sua Vida Saudável</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    
+  </head>
+  <body>
+    <header class="header">
+      <nav id="navbar">
+        <div class="logo-container">
+          <img src="img/abacate.png" alt="Logo" class="logo-img" />
+          <div class="logo">AvoGym</div>
+        </div>
+        <ul id="nav_list">
+          <li class="nav-item active">
+            <a href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#funcionalidades">Funcionalidades</a>
+          </li>
+          <li class="nav-item">
+            <a href="#planos">Planos</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contato">Contato</a>
+          </li>
+        </ul>
+
+        <div id="auth-buttons-container">
+          <div id="login-signup-buttons" class="btn-nav">
+            <div class="Login">
+              <a href="login.html" class="btn-default"> Login </a>
+            </div>
+            <div class="Cadastro">
+              <a href="Cadastro.html" class="btn-default"> Cadastro </a>
+            </div>
+          </div>
+          <div id="user-profile-info" style="display: none">
+            <p>Bem-vindo(a), <span id="user-name"></span>!</p>
+            <a href="#" class="btn-default" id="logout-button">Logout</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content">
+      <section id="home">
+        <div class="shape"></div>
+        <div class="cta">
+          <h1 class="title">
+            Sua jornada para um corpo mais saudável e forte começa aqui
+            <span>Alcance seus objetivos de forma inteligente.</span>
+          </h1>
+          <p class="descricao">
+            Com nossos planos personalizados, você terá acesso a rotinas de
+            treino e guias de alimentação pensados para o seu corpo e seu estilo
+            de vida. Diga adeus a dietas restritivas e treinos sem sentido, e
+            comece a ver resultados reais e duradouros. Estamos aqui para te
+            guiar em cada passo.
+          </p>
+          <div class="cta_butao">
+            <a href="Cadastro.html" class="btn-default"> Acesse aqui! </a>
+          </div>
+        </div>
+        <div id="banner">
+          <img src="img/abacateee.png" alt="Logo" />
+        </div>
+      </section>
+    </main>
+
+    <section id="funcionalidades" class="features">
+      <div class="container">
+        <h2>Funcionalidades</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Planos de Dieta</h3>
+            <p>
+              Receitas personalizadas e balanceadas para seus objetivos e
+              preferências.
+            </p>
+            <a href="criarPlano.html" class="btn-features">Criar Plano</a>
+          </div>
+          <div class="card destaque">
+            <h3>Treinos Personalizados</h3>
+            <p>
+              Rotinas eficazes para resistência, força, hipertrofia ou
+              condicionamento geral.
+            </p>
+            <a href="#" class="btn-features">Ver Treinos</a>
+          </div>
+          <div class="card">
+            <h3>Motivação</h3>
+            <p>
+              Capacite a sua mente
+            </p>
+            <a href="#" class="btn-features">Acompanhar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos" class="plans">
+      <div class="container">
+        <h2>Escolha seu Plano</h2>
+        <div class="grid">
+          <div class="plan">
+            <h3>Plano Básico</h3>
+            <div class="price">
+              <span class="value">R$10</span>
+              <span class="period">/mês</span>
+            </div>
+            <p class="description-small">
+              Acesso limitado a treinos, dietas e funcionalidades essenciais
+              para começar sua jornada.
+            </p>
+            <button class="btn">Começar</button>
+          </div>
+          <div class="plan destaque">
+            <h3>Plano Premium</h3>
+            <div class="price">
+              <span class="value">R$25</span>
+              <span class="period">/mês</span>
+            </div>
+            <p class="description-small">
+              Acesso completo a todas as funções, suporte prioritário e planos
+              exclusivos para resultados reais.
+            </p>
+            <button class="btn">Assinar</button>
+          </div>
+          <div class="plan">
+            <h3>Plano Profissional</h3>
+            <div class="price">
+              <span class="value">R$35</span>
+              <span class="period">/mês</span>
+            </div>
+            <p class="description-small">
+              Tudo do Plano Premium, mais acompanhamento individual e relatórios
+              de progresso detalhados.
+            </p>
+            <button class="btn">Contratar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <h2>Qual é a dúvida?</h2>
+          <p>
+            Preencha o formulário e entraremos em contato com o suporte o mais
+            rápido possível.
+          </p>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <div class="info-content">
+              <h4>Telefone</h4>
+              <span>(91) 99622-7393</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="info-content">
+              <h4>Localização</h4>
+              <span
+                >Rua Estejão, 13 - Bairro Dururu, Cidade São Paulo - SP</span
+              >
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div class="info-content">
+              <h4>E-mail</h4>
+              <span>kallebe.silva@discente.ufra.edu.br</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fab fa-whatsapp"></i>
+            <div class="info-content">
+              <h4>Whatsapp</h4>
+              <span>(91) 99622-7393</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Contatar</h3>
+          <form>
+            <div class="form-group-inline">
+              <input type="text" placeholder="Nome" required />
+              <input type="email" placeholder="E-mail" required />
+            </div>
+            <input type="text" placeholder="Assunto" required />
+            <textarea placeholder="Mensagem"></textarea>
+            <button type="submit" class="btn">Enviar mensagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div id="footer_items">
+        <div>
+          <span id="copyright">
+            © 2025 AvoGym - &copy 2025 Kallebe Torres
+          </span>
+        </div>
+        <div class="social-media-buttons">
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="fomulário/assets/js/perfil.js"></script>
+    <script src="js/head.js"></script>
+    <script src="js/home.js"></script>
+  </body>
+</html>
+
+<!--#151111c1-->
