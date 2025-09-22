@@ -31,7 +31,7 @@
     <nav id="navbar">
       <div class="logo-container">
         <img src="img/abacate.png" alt="Logo" class="logo-img" />
-        <div class="logo">AvoGym</div>
+        <a href="index.html" class="logo">AvoGym</a>
       </div>
 
       <ul id="nav_list">
@@ -59,16 +59,20 @@
             Dieta
           </h1>
           <p class="text-lg text-gray-700 mt-2">
-            <span
-              class="font-semibold text-primary-green"
-              id="tipo-dieta"
-            ></span>
+            <span class="font-semibold text-primary-green" id="tipo-dieta"></span>
           </p>
         </div>
 
         <section
           class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center w-full max-w-lg mb-8"
         >
+          <p class="text-lg text-gray-700 mb-4">
+            Tipo de Alimentação:
+            <span
+              id="tipo-alimentacao-dieta"
+              class="font-semibold text-primary-green"
+            ></span>
+          </p>
           <p class="text-lg text-gray-700 mb-4">
             Objetivo:
             <span
@@ -78,7 +82,8 @@
           </p>
           <a href="criarPlano.html" id="criar-plano-btn"
             class="bg-primary-green text-white font-semibold py-3 px-8 rounded-full shadow-md hover:bg-green-700 transition duration-300"
-          >Criar plano</a>
+            >Criar plano</a
+          >
         </section>
 
         <section class="grid grid-cols-2 gap-4 w-full max-w-lg">
