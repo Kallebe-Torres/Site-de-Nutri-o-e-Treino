@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="pageTitle">Detalhes do Plano</title>
+    <link rel="stylesheet" href="css/gerardieta/historicoPlano.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <h1 id="planoHeaderTitle">Carregando Detalhes...</h1>
+      <nav>
+        <a href="historico_planos.html" class="nav-button"
+          >Voltar ao Histórico</a
+        >
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- 
+      Este é o container principal que o JS vai procurar. 
+      Ele começa escondido ('hidden') e o JS o revela.
+    -->
+      <section id="planoDetalhes" class="plano-card hidden">
+        <!-- Mensagem de erro que o JS usa se a busca falhar -->
+        <p id="loadingError" class="message-error hidden">
+          Erro ao carregar o plano. Verifique o ID e o servidor.
+        </p>
+
+        <!-- IDs que o 'visualizar.js' vai preencher -->
+        <div class="meta-info">
+          <p>
+            <strong>Meta Calórica Total:</strong>
+            <span id="metaCalorica"></span>
+          </p>
+          <p><strong>Criação:</strong> <span id="dataCriacao"></span></p>
+          <p>
+            <strong>Distribuição de Macros:</strong>
+            <span id="distribuicaoMacros"></span>
+          </p>
+        </div>
+
+        <div class="user-data-summary">
+          <h3>Dados do Usuário</h3>
+          <p><strong>Objetivo:</strong> <span id="userObjetivo"></span></p>
+          <p><strong>Idade/Peso/Altura:</strong> <span id="userInfo"></span></p>
+        </div>
+
+        <hr />
+
+        <!-- O JS vai injetar a lista de refeições aqui dentro -->
+        <div id="refeicoesContainer"></div>       
+
+        <!-- Observações -->
+        <div class="observacoes">
+          <h3>Observações:</h3>
+          <p id="observacoesTexto"></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/visualizar.js"></script>
+  </body>
+</html>

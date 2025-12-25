@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/gerardieta/plano.css">
+    <title>AvoGym - Criar Plano</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  </head>
+  <body>
+    
+    <header class="main-header">
+      <div class="header-logo">
+        <img src="img/abacate.png" alt="Logo Nutri Inteligente" style="width: 32px; height: 32px;"> 
+        <h1>AvoNutri</h1>
+      </div>
+      
+      <nav class="header-nav">
+        <a href="historico_planos.html" class="history-link">
+          <i class="fas fa-history"></i> Histórico de Planos
+        </a>
+      </nav>
+    </header>
+    <main class="page-container">
+      <div class="plan-card">
+        
+        <header class="card-header">
+            <a href="index.html" class="back-arrow" aria-label="Voltar">
+              <i class="fas fa-arrow-left"></i>
+            </a>
+            <h2>Criar plano</h2>
+        </header>
+          
+        <form id="plan-form" action="#" method="POST">
+          <div id="progress-bar">
+            <div class="step-indicator active" data-step="1">1</div>
+            <div class="step-indicator" data-step="2">2</div>
+            <div class="step-indicator" data-step="3">3</div>
+            <div class="step-indicator" data-step="4">4</div>
+            <div class="step-indicator" data-step="5">5</div>
+          </div>
+
+          <div class="form-step active" data-step="1">
+            <h3>1. Dados Antropométricos</h3>
+
+            <div class="form-row">
+              <label for="sexo" class="form-cell">Sexo:</label>
+              <div class="form-cell input-cell">
+                <select name="sexo" id="sexo" class="inline-select" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option value="Feminino">Feminino</option>
+                  <option value="Masculino">Masculino</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="idade" class="form-cell">Idade:</label>
+              <div class="form-cell input-cell">
+                <input
+                  type="number"
+                  name="idade"
+                  id="idade"
+                  placeholder="Anos"
+                  class="inline-input"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="peso" class="form-cell">Peso (kg):</label>
+              <div class="form-cell input-cell">
+                <input
+                  type="number"
+                  name="peso"
+                  id="peso"
+                  placeholder="kg"
+                  class="inline-input"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="altura" class="form-cell">Altura (cm):</label>
+              <div class="form-cell input-cell">
+                <input
+                  type="number"
+                  name="altura"
+                  id="altura"
+                  placeholder="cm"
+                  class="inline-input"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="2">
+            <h3>2. Objetivo e Calorias</h3>
+
+            <div class="form-row">
+              <label for="objetivo" class="form-cell">Objetivo:</label>
+              <div class="form-cell input-cell">
+                <select
+                  name="objetivo"
+                  id="objetivo"
+                  class="inline-select"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Selecione o objetivo
+                  </option>
+                  <option value="Ganhar Massa">Ganhar Massa</option>
+                  <option value="Perder peso">Perder peso</option>
+                  <option value="Manter">Manter</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="frequencia" class="form-cell"
+                >Treinos na Semana:</label
+              >
+              <div class="form-cell input-cell">
+                <select
+                  name="frequencia"
+                  id="frequencia"
+                  class="inline-select"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Frequência de atividade
+                  </option>
+                  <option value="1-2">1 a 2 treinos</option>
+                  <option value="3-5">3 a 5 treinos</option>
+                  <option value="5-7">5 a 7 treinos</option>
+                  <option value="1-2">Não Treina</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="3">
+            <h3>3. Alimentação e Restrições</h3>
+
+            <div class="form-row">
+              <label for="tipoDieta" class="form-cell"
+                >Tipo de Alimentação:</label
+              >
+              <div class="form-cell input-cell">
+                <select
+                  name="tipoDieta"
+                  id="tipoDieta"
+                  class="inline-select"
+                  required
+                >
+                  <option value="" disabled selected>Selecione o tipo</option>
+                  <option value="Padrão">Padrão</option>
+                  <option value="Vegetariana">Vegetariana</option>
+                  <option value="Vegana">Vegana</option>
+                  <option value="Sem glúten">Sem glúten</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="numRefeicoes" class="form-cell">
+                Quantas Refeições faz por dia:
+              </label>
+              <div class="form-cell input-cell">
+                <select
+                  name="numRefeicoes"
+                  id="numRefeicoes"
+                  class="inline-select"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Selecione a quantidade
+                  </option>
+                  <option value="3">3 Refeições</option>
+                  <option value="4">4 Refeições</option>
+                  <option value="5">5 Refeições</option>
+                  <option value="6">6 Refeições</option>
+                  <option value="7">7 ou mais Refeições</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="alergias" class="form-cell"
+                >Alergias/Intolerâncias:</label
+              >
+              <div class="form-cell input-cell">
+                <select name="alergias" id="alergias" class="inline-select">
+                  <option value="Nenhuma" selected>Nenhuma</option>
+                  <option value="Glúten">Glúten</option>
+                  <option value="Lactose">Lactose</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="restricoes" class="form-cell"
+                >Outras Restrições (ex: frutas, especiarias):</label
+              >
+              <div class="form-cell input-cell">
+                <textarea
+                  name="restricoes"
+                  id="restricoes"
+                  class="inline-input inline-textarea"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="4">
+            <h3>4. Detalhes Adicionais</h3>
+
+            <div class="form-row">
+              <label for="descricao" class="form-cell"
+                >Descreva sua Rotina Diária:</label
+              >
+              <div class="form-cell input-cell">
+                <textarea
+                  name="descricao"
+                  id="descricao"
+                  class="inline-input inline-textarea"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="5">
+            <h3>Sua Dieta Personalizada</h3>
+
+            <div id="diet-plan-output" class="plan-output-container">
+              <p style="text-align: center; color: #555">
+                Clique em "Gerar Plano de Dieta" para receber sua sugestão
+                personalizada.
+              </p>
+            </div>
+          </div>
+
+          <div class="form-step" data-step="6" id="final-result-step">
+              <header class="card-header">
+                <h2>Seu Plano de Dieta</h2>
+              </header>
+              <div id="diet-plan-output-final" class="plan-output-container">
+              </div>
+          </div>
+          
+          <div id="form-navigation">
+            <button
+              type="button"
+              class="btn-plan-nav prev-btn"
+              style="display: none"
+            >
+              <i class="fas fa-arrow-left"></i> Anterior
+            </button>
+            <button type="button" class="btn-plan-nav next-btn">
+              Próximo <i class="fas fa-arrow-right"></i>
+            </button>
+            <button
+              type="submit"
+              id="submit-plan-btn"
+              class="btn-create-plan"
+              style="display: none"
+            >
+              Gerar Plano de Dieta
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <script src="js/plano.js"></script>
+    <script></script>
+  </body>
+</html>

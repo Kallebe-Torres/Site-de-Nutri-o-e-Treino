@@ -1,0 +1,1175 @@
+/* --- Variáveis CSS (Combinadas) --- */
+:root {
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --bg: #f9fafb;
+  --card-bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+
+  /* Cores da Aplicação */
+  --color-primary: #00ccbe;
+  --color-secondary: #09a6a3;
+  --color-accent-bg: #e9ecef;
+
+  /* Cores de Feedback (usadas pelo JS) */
+  --custom-blue-50: #ebf5ff;
+  --custom-blue-500: #3b82f6;
+  --custom-blue-600: #2563eb;
+  --custom-dark-green: #059669;
+  --custom-green: #10b981;
+  --custom-yellow: #f59e0b;
+
+  --shadow-sm: 0 4px 12px -2px rgba(0, 0, 0, 0.08),
+    0 2px 4px -2px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Navigation Header (Barra Superior) --- */
+.header {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 0.75rem 1.5rem;
+  /* Padding direto no header */
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  /* Permite quebra em mobile */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 0.5rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+/* Botão "Selecionar Plano" (Central) */
+.nav-links-center {}
+
+.nav-button-selecionar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--color-secondary);
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  font-size: 0.9rem;
+}
+
+.nav-button-selecionar:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-secondary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Container de Autenticação (Direita) */
+.auth-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.login-signup-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-nav a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.btn-nav.Login a {
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-nav.Login a:hover {
+  background-color: var(--color-primary);
+  color: var(--card-bg);
+}
+
+.btn-nav.Cadastro a {
+  background-color: var(--color-primary);
+  color: var(--card-bg);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-nav.Cadastro a:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.user-profile-info {
+  position: relative;
+}
+
+#user-profile-icon {
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--custom-green);
+  color: var(--card-bg);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-dropdown-box {
+  position: absolute;
+  top: 120%;
+  /* Um pouco abaixo do ícone */
+  right: 0;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  width: 240px;
+  margin-top: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 100;
+  /* 🚨 Z-INDEX ALTO para ficar sobre tudo */
+}
+
+/* Classe 'active' (adicionada pelo JS) mostra o dropdown */
+.user-dropdown-box.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background-color: #f9fafb;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  font-weight: 600;
+}
+
+.user-icon-large {
+  font-size: 1.5rem;
+  color: var(--custom-green);
+}
+
+.dropdown-body {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.logout-dropdown-btn {
+  width: calc(100% - 2rem);
+  margin: 0 1rem 1rem 1rem;
+  padding: 0.5rem;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logout-dropdown-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Menu Mobile */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* Esconde a lista de links (Home, Funcionalidades, etc.) */
+#nav_list {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .nav-links-center {
+    display: none;
+    /* Esconde "Selecionar Plano" no mobile */
+  }
+
+  #nav_list {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding-top: 0.5rem;
+    /* JS controla o 'display: flex' com a classe 'show' */
+  }
+
+  #nav_list.show {
+    display: flex;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+}
+
+/* --- Header da Página (Abaixo do Nav) --- */
+.page-header {
+  max-width: 1100px;
+  margin: 2rem auto 1rem;
+  padding: 0 1.5rem;
+  text-align: left;
+}
+
+.page-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  /* Usando --color-secondary aqui */
+  margin: 0 0 0.5rem 0;
+}
+
+#current-date-display {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* --- Navegação dos Dias (COM SETAS AJUSTADAS) --- */
+.days-wrap {
+  /* Alinha as setas e a lista de dias na mesma linha */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Centraliza o conjunto */
+  margin-bottom: 20px;
+
+  /* Ajusta o padding para dar espaço para as setas */
+  padding-left: 0.5rem;
+  /* Menor padding */
+  padding-right: 0.5rem;
+}
+
+.days-nav {
+  /* Faz a lista de dias rolar, mas mantém as setas fixas */
+  overflow-x: auto;
+
+  /* Remove o scrollbar padrão */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE */
+
+  /* Estilos antigos movidos para cá */
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 4px 1.5rem;
+  /* Padding interno para os botões de dia */
+}
+
+.days-nav::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+.nav-arrow-btn {
+  background-color: var(--card-bg);
+  /* Fundo branco */
+  border: none;
+  /* <<< REMOVIDA A BORDA */
+  color: var(--muted);
+  /* <<< COR CINZA por padrão */
+  width: 36px;
+  /* <<< TAMANHO ligeiramente menor */
+  height: 36px;
+  border-radius: 50%;
+  /* Mantém redondo */
+  font-size: 1.4rem;
+  /* <<< FONTE ligeiramente menor */
+  font-weight: 400;
+  /* <<< FONTE mais fina */
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  margin: 0 0.4rem;
+  /* <<< ESPAÇAMENTO ligeiramente menor */
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+  /* <<< SOMBRA mais sutil */
+}
+
+.nav-arrow-btn:hover:not(:disabled) {
+  /* Só aplica hover se não estiver desabilitado */
+  background-color: var(--color-primary);
+  /* <<< FUNDO TEAL no hover */
+  color: var(--card-bg);
+  /* <<< TEXTO BRANCO no hover */
+  transform: scale(1.03);
+  /* Efeito de scale menor */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  /* Sombra um pouco maior no hover */
+}
+
+.nav-arrow-btn:disabled {
+  opacity: 0.4;
+  /* <<< OPACIDADE menor quando desabilitado */
+  cursor: not-allowed;
+  transform: none;
+  background-color: var(--bg);
+  /* Fundo da página */
+  box-shadow: none;
+  /* Sem sombra quando desabilitado */
+  color: var(--muted);
+  /* Mantém cor cinza */
+}
+
+/* Botões de Dia (Estilos Mantidos) */
+.day-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 84px;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: #374151;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  position: relative;
+  flex-shrink: 0;
+  /* Impede que os botões encolham */
+}
+
+.day-btn:hover:not(:disabled) {
+  background: var(--custom-blue-50);
+  border-color: var(--custom-blue-500);
+}
+
+.day-btn.selected {
+  background: var(--custom-green);
+  border-color: var(--custom-dark-green);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.16);
+}
+
+.day-btn .weekday {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.day-btn .datepart {
+  font-size: 14px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.day-btn.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #f3f4f6;
+}
+
+.day-btn.locked svg {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 12px;
+  height: 12px;
+  color: #9ca3af;
+}
+
+/* --- Layout Principal (Container) --- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Padrão mobile: uma coluna */
+  gap: 22px;
+}
+
+/* Em telas maiores, divide em duas colunas */
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: 360px 1fr;
+  }
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-head h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+/* Ícones SVG */
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+}
+
+.icon.small {
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+}
+
+/* (Card Esquerdo) Blocos de Refeição */
+.meal-block {
+  border-bottom: 1px dashed #d1d5db;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.meal-block.last {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.meal-block h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.center {
+  text-align: center;
+}
+
+.tiny {
+  font-size: 12px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* (Card Direito) Topo */
+.top .brand {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.brand img {
+  height: 24px;
+  width: auto;
+}
+
+.brand-text {
+  color: var(--custom-green);
+}
+
+.top h2 {
+  margin: 0;
+  font-size: 20px;
+  margin-top: 6px;
+  font-weight: 700;
+}
+
+.top .small {
+  margin-bottom: 10px;
+}
+
+/* (Card Direito) Input de Peso */
+.weight-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--custom-blue-50);
+  border-radius: 12px;
+  border: 1px solid #eaf6ff;
+}
+
+.weight-row label {
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.weight-row input {
+  margin-left: auto;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  max-width: 150px;
+  font-size: 14px;
+}
+
+.weight-row input:focus {
+  outline: 2px solid var(--custom-blue-500);
+  border-color: var(--custom-blue-600);
+}
+
+/* (Card Direito) Sub-seções */
+.card-sub {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 14px;
+}
+
+.card-sub-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.card-sub-head h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.card-sub-head .icon {
+  color: var(--muted);
+}
+
+/* (Card Direito) Metas do Plano */
+.goals {
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+}
+
+.goals .icon {
+  color: #f59e0b;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.macro-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--custom-yellow);
+  color: #111827;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.macro-box .label {
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.macro-box .value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* (Card Direito) Consumo do Dia */
+.consumption {
+  background: var(--custom-blue-50);
+  border: 1px solid #ddf1ff;
+}
+
+.consumption .icon {
+  color: var(--custom-blue-500);
+}
+
+.consumption-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.calories-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--custom-green);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.16);
+}
+
+.calories-box .tiny {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.big {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.macros-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.macro-card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  align-items: center;
+  background: var(--card-bg);
+}
+
+.macro-card label {
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: #4b5563;
+}
+
+.macro-card input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  text-align: center;
+  font-weight: 600;
+}
+
+.macro-card input:focus {
+  outline: 2px solid var(--custom-blue-500);
+  border-color: var(--custom-blue-600);
+}
+
+/* (Card Direito) Observação */
+.observation {
+  margin-top: 16px;
+}
+
+.observation .icon {
+  color: var(--custom-blue-600);
+}
+
+.observation textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  resize: none;
+  font-size: 14px;
+}
+
+.observation textarea:focus {
+  outline: 2px solid var(--custom-blue-500);
+  border-color: var(--custom-blue-600);
+}
+
+/* (Card Direito) Status das Refeições */
+.meal-status {
+  margin-top: 16px;
+}
+
+.meal-status .icon {
+  color: #6b7280;
+}
+
+.meal-status .status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dashed #d1d5db;
+}
+
+.meal-status .status-row:last-child {
+  border-bottom: 0;
+}
+
+.status-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-button:hover {
+  background-color: #f9fafb;
+}
+
+.status-button .icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.status-text {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Status color variants */
+.dot-gray {
+  background: #9ca3af;
+}
+
+.dot-green {
+  background: #10b981;
+}
+
+.dot-yellow {
+  background: #f59e0b;
+}
+
+.dot-red {
+  background: #ef4444;
+}
+
+/* Dropdown menu (para status) */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  width: 180px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  z-index: 40;
+  padding: 6px;
+  display: none;
+}
+
+.dropdown-menu .option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.dropdown-menu .option:hover {
+  background: #f3f4f6;
+}
+
+/* (Card Direito) Botão Salvar */
+.save-row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#save-button {
+  background: var(--custom-green);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 16px;
+  border: 2px solid var(--custom-green);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+#save-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+  background-color: var(--muted);
+  border-color: var(--muted);
+}
+
+#save-button:hover:not(:disabled) {
+  background: var(--custom-dark-green);
+  border-color: var(--custom-dark-green);
+  box-shadow: 0 12px 30px rgba(5, 150, 105, 0.16);
+  transform: translateY(-2px);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 1024px) {
+  /* Em telas menores, o layout principal fica com uma coluna (já é o padrão) */
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 0;
+    /* Remove padding do body em mobile */
+  }
+
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  .goals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .consumption-grid {
+    grid-template-columns: 1fr;
+    /* Coloca calorias em cima */
+  }
+
+  .macros-grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* Mantém 3 colunas */
+  }
+
+  .container {
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .page-header {
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .days-nav {
+    padding: 4px 1rem;
+  }
+}
+
+/* --- Estilos do Modal de Relatório (Acompanhamento) --- */
+
+/* 1. O Fundo (Overlay) */
+.custom-modal-overlay {
+  /* Por padrão, fica escondido */
+  display: none;
+
+  /* Quando o JS mudar para 'display: flex', ele aparece */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  /* Mais alto que o header */
+
+  /* Centraliza o modal na tela */
+  /* O display: flex é controlado pelo JS */
+  align-items: center;
+  justify-content: center;
+
+  /* Efeito de fade-in */
+  animation: fadeInOverlay 0.3s ease-out;
+}
+
+/* 2. O Conteúdo (Caixa do Modal) */
+.custom-modal-content {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Para o header/footer terem cantos arredondados */
+  animation: slideInModal 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 3. Cabeçalho */
+.modal-header-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-title-custom {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: var(--text);
+}
+
+/* 4. Corpo e Formulário */
+.modal-body-custom {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.form-group-custom {
+  margin-bottom: 1.25rem;
+}
+
+.form-group-custom label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.form-control-custom {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-family: var(--font);
+  color: var(--text);
+  border: 1px solid #ccc;
+  /* Usando #ccc para inputs, como no seu CSS */
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Efeito de foco usando sua cor primária */
+.form-control-custom:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 204, 190, 0.2);
+}
+
+/* 5. Rodapé e Botões */
+.modal-footer-custom {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  background-color: var(--bg);
+  /* Usa o fundo da sua página */
+}
+
+/* Estilos base dos botões (para .btn) */
+.btn {
+  padding: 0.7rem 1.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* Espaço entre ícone e texto */
+}
+
+/* Botão Secundário (Cancelar) */
+.btn-secondary {
+  background-color: var(--accent-bg);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: #e0e0e0;
+  /* Um pouco mais escuro que accent-bg */
+}
+
+/* Botão Primário (Gerar) */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-secondary);
+  /* Usa sua cor secundária no hover */
+}
+
+/* 6. Animações */
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInModal {
+  from {
+    transform: translateY(-50px) scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+}
+
+/* --- Ajuste para telas de celular (HEADER e BOTÃO GERAR RELATÓRIO) --- */
+@media (max-width: 640px) {
+  .page-header-content {
+    flex-direction: column;
+    /* Empilha o título e o botão */
+    align-items: stretch;
+    /* Faz o botão ocupar 100% da largura */
+  }
+
+  .page-header h1 {
+    text-align: center;
+    /* Centraliza o H1 no mobile */
+  }
+
+  #current-date-display {
+    text-align: center;
+    /* Centraliza a data no mobile */
+    margin-bottom: 1rem;
+    /* Adiciona espaço antes do botão */
+  }
+}

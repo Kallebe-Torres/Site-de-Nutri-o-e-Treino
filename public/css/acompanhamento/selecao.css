@@ -1,0 +1,412 @@
+:root {
+    /* Cores Ciano/Turquesa (Paleta Atual) */
+    --color-primary: #00ccbe;
+    /* Cor principal de destaque */
+    --color-secondary: #09a6a3;
+    /* Cor escura para hover/detalhe */
+    --color-background-light: #f4f4f9;
+    /* Fundo claro da página */
+    --color-text: #333;
+    /* Texto principal */
+
+    /* Cores de Sombra e Acento */
+    --color-shadow-light: #9dbfaf;
+    /* Usado para bordas claras */
+    --color-shadow: rgba(0, 0, 0, 0.08);
+    /* Sombra sutil principal */
+
+    /* Cores de Fundo Secundárias */
+    --color-light-bg: #f8f9fa;
+    /* Cinza muito claro (Fundo de itens/cards) */
+    --color-accent-bg: #e9ecef;
+    /* Cinza para o fundo dos itens/linha de separação */
+}
+
+.container {
+    width: 90%; /* Ocupa 90% da tela */
+    max-width: 900px; /* Limite máximo (ok) */
+    /* Adicione um 'min-width' se houver problemas de encolhimento extremo em telas pequenas,
+       mas o problema principal é geralmente o max-width */
+    
+    /* Os demais estilos já estão corretos */
+    margin: 30px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-background-light);
+    color: var(--color-text);
+    min-width: 320px; 
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* ----------------- Header & Navegação ----------------- */
+
+header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-weight: 600;
+    /* Estilo para o ícone no título do header */
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 8px 18px;
+    margin: 0 8px;
+    background-color: var(--color-secondary);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--color-secondary);
+}
+
+.nav-button:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-secondary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ----------------- Container Principal ----------------- */
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2,
+h3 {
+    color: var(--color-secondary);
+    border-bottom: 2px solid var(--color-accent-bg);
+    padding-bottom: 8px;
+    margin-top: 35px;
+    font-weight: 500;
+}
+
+/* Descrição da Seção */
+.section-description {
+    color: #6c757d; 
+    font-style: italic;
+    margin-bottom: 25px;
+    padding-left: 5px;
+}
+
+/* ----------------- Formulário e Inputs ----------------- */
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid var(--color-shadow-light);
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 204, 190, 0.5);
+}
+
+/* ----------------- Botões de Ação Principal ----------------- */
+
+button:not(.btn-selecionar):not(.btn-pdf):not(.btn-secondary-action),
+.primary-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover:not(.btn-selecionar):not(.btn-pdf):not(.btn-secondary-action),
+.primary-button:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ----------------- Resultado do Plano (Card) ----------------- */
+
+#resultado,
+.plano-card {
+    margin-top: 30px;
+    padding: 30px;
+    border: 1px solid var(--color-accent-bg);
+    border-radius: 10px;
+    background-color: var(--color-light-bg);
+}
+
+/* ----------------- Lista de Planos (Seleção) ----------------- */
+
+#lista-planos {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilo do elemento LI (Contém detalhes + botão) */
+.plano-item-selecao {
+    display: flex; 
+    flex-direction: column; /* Coloca detalhes e botão em colunas por padrão (mobile) */
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha o texto à esquerda em mobile */
+    gap: 10px;
+    
+    background: white;
+    margin-bottom: 15px; /* Aumentei a margem */
+    padding: 20px; 
+    border-radius: 10px; /* Mais arredondado */
+    border-left: 8px solid var(--color-primary); /* Borda mais grossa */
+    box-shadow: 0 4px 8px var(--color-shadow); /* Sombra mais visível */
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+
+/* Adaptação para Desktop/Tablet */
+@media (min-width: 600px) {
+    .plano-item-selecao {
+        flex-direction: row; /* Coloca detalhes e botão em linha */
+        align-items: center; /* Centraliza verticalmente */
+    }
+}
+
+/* Efeito de hover aplicado ao LI */
+.plano-item-selecao:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    background-color: var(--color-light-bg); 
+}
+
+/* Estilos de detalhes dentro do item */
+.plano-details-text {
+    flex-grow: 1; /* Ocupa o máximo de espaço horizontal disponível */
+}
+
+.plano-details-text strong {
+    font-weight: 700;
+    font-size: 1.15em;
+    color: var(--color-secondary); /* Destaca o ID/Meta */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.plano-details-text small {
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* Botão de Seleção Específico */
+.btn-selecionar {
+    /* Estilo de destaque para o botão */
+    padding: 10px 20px;
+    background-color: var(--color-secondary);
+    color: white;
+    border: none;
+    border-radius: 25px; /* Ainda mais arredondado (estilo pílula) */
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.2s;
+    width: auto; 
+    margin: 0; 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    min-width: 180px; /* Garante que o botão tenha um tamanho decente */
+    text-align: center;
+}
+
+.btn-selecionar:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ----------------- Visualização Detalhada (Ajuste para borda sólida) ----------------- */
+
+.meta-info,
+.user-data-summary,
+.observacoes {
+    border: 1px solid var(--color-accent-bg);
+    padding: 20px; 
+    margin-bottom: 20px;
+    border-radius: 10px; 
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+}
+
+/* Estilo para os títulos (Dados do Usuário, etc.) dentro dessas caixas */
+.meta-info h3,
+.user-data-summary h3,
+.observacoes h3 {
+    color: var(--color-secondary);
+    border-bottom: 1px solid var(--color-accent-bg);
+    padding-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.refeicao-item {
+    border: 1px solid var(--color-accent-bg);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: var(--color-light-bg);
+}
+
+.refeicao-item h4 {
+    margin-top: 0;
+    color: var(--color-primary);
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.refeicao-item p {
+    white-space: pre-wrap;
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* ----------------- Botões de Ação Secundária (PDF e Edição) ----------------- */
+
+.plan-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-pdf {
+    /* Estilo para o botão de PDF */
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-secondary);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px var(--color-shadow);
+}
+
+.btn-pdf:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-1px);
+}
+
+/* Ajuste de variáveis para a nova paleta Ciano/Turquesa */
+.btn-secondary-action {
+    /* Estilo base para o botão Editar */
+    padding: 10px 18px;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    background-color: white;
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px var(--color-shadow);
+}
+
+.btn-secondary-action:hover {
+    background-color: var(--color-accent-bg);
+}
+
+.btn-primary-save {
+    /* Estilo de destaque para o botão SALVAR */
+    background-color: var(--color-primary) !important;
+    color: white !important;
+    border-color: var(--color-primary) !important;
+}
+
+.btn-primary-save:hover {
+    background-color: var(--color-secondary) !important;
+    transform: translateY(-1px);
+}
+
+/* ----------------- Edição de Texto (Textarea) ----------------- */
+
+.meal-textarea-edit {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 1px solid var(--color-shadow-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1.5;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    resize: vertical;
+}
+
+.meal-textarea-edit:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 204, 190, 0.3);
+}
+
+/* ----------------- Mensagens ----------------- */
+
+.message-error {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    background-color: #ffe0e0;
+    color: #cc0000;
+    border: 1px solid #ff9999;
+}
+
+.message-info {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    background-color: #e3fff9;
+    color: var(--color-secondary);
+    border: 1px solid var(--color-primary);
+}

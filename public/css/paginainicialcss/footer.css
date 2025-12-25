@@ -1,0 +1,79 @@
+:root {
+    --color1: #00ccbe;
+    --color2: #09a6a3;
+    --color3: #9dbfaf;
+    --color4: #edebc9;
+    --color5: #fcf9d8;
+}
+
+/* Estilos gerais do rodapé */
+footer {
+    background-color: var(--color1);
+    color: #fff;
+    padding: 24px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container dos itens do rodapé - Ajustado */
+#footer_items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Estilo do texto de copyright */
+#copyright {
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Estilos para os botões das redes sociais */
+.social-media-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-media-buttons a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Estilo para os ícones */
+.social-media-buttons a i {
+    color: #000;
+    font-size: 1.2rem;
+}
+
+/* Efeito de hover para os ícones */
+.social-media-buttons a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- */
+/* Responsividade para telas menores */
+/* --- */
+@media (max-width: 600px) {
+    #footer_items {
+        flex-direction: column;
+        gap: 15px;
+        /* Adiciona o espaço entre o texto e os ícones */
+        padding: 0 10px;
+    }
+}

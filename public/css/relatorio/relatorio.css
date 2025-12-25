@@ -1,0 +1,691 @@
+/* --- VARIÁVEIS, BASE, UTILIDADES (MANTIDO) --- */
+:root {
+  --color-primary: #00ccbe; /* Verde-azulado vibrante (Seu relatório) */
+  --color-primary-dark: #009c99; /* Tom mais escuro para contraste */
+  --color-background: #f0fff8; /* Fundo mais claro e suave */
+  --color-card-bg: #ffffff;
+  --color-text-dark: #2c3e50;
+  --color-text-medium: #555;
+  --color-text-light: #7f8c8d;
+  --color-border-light: #e0e6e9;
+  --color-error: #e74c3c;
+  --color-success: #2ecc71;
+  --color-attention: #f39c12;
+
+  --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+
+  --border-radius-main: 12px;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+}
+
+html {
+  height: 100%;
+}
+
+/* --- BASE E TIPOGRAFIA (MANTIDO) --- */
+body {
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 0;
+  background-color: var(--color-background);
+  line-height: 1.6;
+  color: var(--color-text-dark);
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-dark);
+  margin-top: 0;
+  margin-bottom: 0.8em;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+
+/* --- UTILIDADES GERAIS (MANTIDO) --- */
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.max-w-7xl {
+  max-width: 1200px;
+}
+.w-full {
+  width: 100%;
+}
+.rounded-xl {
+  border-radius: var(--border-radius-main);
+}
+.shadow-subtle {
+  box-shadow: var(--shadow-subtle);
+}
+.border {
+  border: 1px solid var(--color-border-light);
+}
+.text-center {
+  text-align: center;
+}
+.text-white {
+  color: white;
+}
+.transition-effects {
+  transition: all 0.25s ease-out;
+}
+.hidden {
+  display: none !important;
+}
+
+/* Flexbox Utilities */
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.flex-col {
+  flex-direction: column;
+}
+.md\:flex-row {
+  flex-direction: row;
+}
+.flex-1 {
+  flex: 1;
+}
+
+/* Spacing (ajustado para body) */
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.ml-4 {
+  margin-left: 1rem;
+}
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+.pt-2 {
+  padding-top: 0.5rem;
+}
+.p-1 {
+  padding: 0.25rem;
+}
+.p-4 {
+  padding: 1rem;
+}
+.p-6 {
+  padding: 1.5rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* --- HEADER (CABEÇALHO) GERAL --- */
+.header {
+  background-color: var(--color-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.25rem 0;
+}
+
+.navbar {
+  height: 48px;
+}
+
+.logo-img {
+  width: 28px; /* Reduz ligeiramente o logo */
+  height: 28px;
+}
+
+/* --- AJUSTE: REMOVE PONTO E SUBLINHADO DA LISTA DE NAVEGAÇÃO --- */
+/* Remove o ponto/asterisco de todos os itens de lista de navegação */
+.nav-list {
+  list-style-type: none; /* Remove o ponto (bullet) */
+  display: flex; /* Garante que os itens fiquem em linha no desktop */
+  align-items: center;
+  margin: 0;
+  padding: 0; /* Remove padding padrão de lista */
+}
+/* Espaçamento entre os itens da lista */
+.nav-item:not(:last-child) {
+  margin-right: 1.5rem; /* Adiciona espaço entre os links */
+}
+
+.nav-link {
+  color: white;
+  font-weight: 500;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  font-size: 0.9rem;
+  text-decoration: none; /* AJUSTE: Remove sublinhado padrão dos links */
+  /* REMOVIDO: Linhas sublinhadas (border-bottom) foram removidas no HTML */
+}
+
+.nav-link:hover {
+  background-color: var(--color-primary-dark);
+  color: white;
+}
+/* --- FIM AJUSTE NAVEGAÇÃO --- */
+
+/* Botões de autenticação */
+.auth-buttons-group {
+  /* AJUSTE: Garante que os botões de Login e Cadastro fiquem agrupados */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espaçamento entre os botões */
+}
+
+.btn-nav {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem; /* Torna a fonte menor */
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#user-profile-icon {
+  font-size: 1.2rem; /* Reduz o tamanho do ícone */
+}
+
+.btn-login {
+  background-color: white;
+  color: var(--color-primary-dark);
+  /* AJUSTE: Remove a borda direita que fazia parecer que estava solto */
+  border: 1px solid white;
+}
+
+.btn-login:hover {
+  background-color: #f0f0f0;
+}
+
+.btn-cadastro {
+  background-color: var(--color-primary-dark);
+  color: white;
+  /* AJUSTE: Remove a borda esquerda para melhor alinhamento visual com o Login */
+  border: 1px solid var(--color-primary-dark);
+}
+.btn-cadastro:hover {
+  background-color: var(--color-primary);
+}
+/* --- FIM AJUSTE BOTÕES AUTH --- */
+
+/* Estilos de Perfil (Dropdown) - MANTIDO */
+.user-dropdown-box {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-subtle);
+  padding: 0.75rem;
+  width: 200px;
+  z-index: 100;
+  margin-top: 8px; /* Espaço entre ícone e dropdown */
+  transform-origin: top right;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: scale(0.95);
+}
+.user-dropdown-box.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+}
+.dropdown-header {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text-dark);
+}
+.dropdown-body span {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.logout-dropdown-btn {
+  width: 100%;
+  padding: 0.4rem;
+  background-color: var(--color-error);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+.logout-dropdown-btn:hover {
+  background-color: #c0392b;
+}
+
+/* --- HEADER DE CONTEÚDO (Relatório) (MANTIDO) --- */
+.header-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  /* Aumenta o padding vertical para compensar o header estreito e dar espaço ao topo */
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+}
+.header-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-left: 1rem;
+  padding-bottom: 0.5rem;
+}
+.back-button {
+  padding: 0.6rem;
+  border-radius: 50%;
+  background-color: var(--color-card-bg);
+  box-shadow: var(--shadow-subtle);
+  color: var(--color-primary-dark);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-effects);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-button:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.back-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* --- DASHBOARD E GRID (MOBILE FIRST) (MANTIDO) --- */
+.report-dashboard {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: 1fr;
+  padding: var(--spacing-md); /* Adicionar padding aqui */
+}
+/* Grid para Desktop */
+@media (min-width: 1024px) {
+  .report-dashboard {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .lg-col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+  .lg-col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+}
+
+/* --- CARD GERAL E CONTROLES DE PERÍODO (MANTIDO) --- */
+.main-card {
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-main);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--color-border-light);
+}
+.controls-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .controls-header {
+    flex-direction: row;
+    align-items: center;
+  }
+  .w-md-auto {
+    width: auto !important;
+  }
+}
+
+.period-buttons {
+  display: flex;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 0.25rem;
+  margin-top: 1rem;
+  width: 100%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+@media (min-width: 768px) {
+  .period-buttons {
+    margin-top: 0;
+    width: auto;
+  }
+}
+
+.period-buttons button {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: var(--transition-effects);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  color: var(--color-text-medium);
+}
+.period-buttons button.active {
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-subtle);
+  font-weight: 700;
+}
+.period-buttons button:not(.active):hover {
+  background-color: #f0f0f0;
+}
+
+/* Estilo para seleção de semana */
+.week-buttons-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--color-card-bg);
+  border-radius: var(--border-radius-main);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+  border: 1px solid var(--color-border-light);
+  align-items: center;
+}
+.week-buttons-group p {
+  white-space: nowrap;
+}
+.week-buttons-group button {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.25s ease-out;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: #f8f9fa;
+  color: var(--color-text-dark);
+}
+.week-buttons-group button.active-week {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  box-shadow: var(--shadow-subtle);
+}
+.week-buttons-group button:not(.active-week):hover {
+  background-color: #e0e6e9;
+}
+
+/* --- KPI CARDS (MANTIDO) --- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.kpi-card {
+  padding: 1.2rem;
+  border-radius: var(--border-radius-main);
+  text-align: center;
+  background-color: var(--color-card-bg);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--color-border-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.kpi-card h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-medium);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.kpi-card span {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1.2;
+}
+/* Specific deviation card styling */
+#kpi-desvio-card.success {
+  background-color: var(--color-success);
+}
+#kpi-desvio-card.attention {
+  background-color: var(--color-attention);
+}
+#kpi-desvio-card.error {
+  background-color: var(--color-error);
+}
+#kpi-desvio-card {
+  color: white;
+}
+#kpi-desvio-card h4,
+#kpi-desvio-card span {
+  color: white;
+}
+
+/* --- GRÁFICOS E INSIGHTS (MANTIDO) --- */
+.chart-box,
+.analise-patterns {
+  background-color: var(--color-card-bg);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-main);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--color-border-light);
+  position: relative;
+}
+.chart-box h3,
+.analise-patterns h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  border-bottom: 1px solid var(--color-border-light);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+.chart-container {
+  height: 200px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.macro-bar-container {
+  height: 200px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  position: relative;
+}
+.chart-info-text {
+  font-size: 0.85rem;
+  color: var(--color-text-medium);
+  text-align: center;
+  border-top: 1px dashed var(--color-border-light);
+  padding-top: 0.6rem;
+  margin-top: 0.8rem;
+}
+#insight-text {
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  min-height: 120px;
+  line-height: 1.7;
+}
+#insight-text strong {
+  color: var(--color-primary-dark);
+}
+
+/* --- ÁREA DE PLANO ADAPTATIVO (IA) (MANTIDO) --- */
+.feedback-ia-action h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  border-bottom: 3px solid var(--color-primary);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+#ai-prompt {
+  width: 100%;
+  min-height: 300px;
+  padding: 1.2rem;
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--border-radius-main);
+  resize: vertical;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  background-color: var(--color-background);
+  color: var(--color-text-dark);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: var(--spacing-md);
+  outline: none;
+  word-break: break-word;
+}
+#ai-prompt:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 204, 190, 0.2);
+}
+#btn-adaptar {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--border-radius-main);
+  font-size: 1.15rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-subtle);
+  cursor: pointer;
+  border: none;
+  transition: var(--transition-effects);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+#btn-adaptar:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+#btn-adaptar:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+#ai-response-container {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--border-radius-main);
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-subtle);
+}
+#ai-response-container h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.8rem;
+}
+#ai-response-text {
+  color: var(--color-text-dark);
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* --- LOADING SPINNER (MANTIDO) --- */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-main);
+  z-index: 10;
+}
+.spinner {
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--color-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.page-content {
+  padding-top: 2rem;
+  background-color: var(--color-background);
+  min-height: calc(100vh - 48px); /* Altura total menos o header */
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* AJUSTE AQUI: Responsividade para Mobile */
+@media (max-width: 767px) {
+  /* Oculta a lista de navegação no mobile por padrão */
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 48px; /* Ajustado para a altura do novo header */
+    left: 0;
+    background-color: var(--color-primary-dark);
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .nav-list.active {
+    display: flex;
+  }
+  .nav-item {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    margin-right: 0; /* Remove margem lateral no mobile */
+  }
+  .nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+  }
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+  /* Oculta botões de login/cadastro no mobile (mantendo no menu dropdown ou sendo manipulado pelo JS) */
+  #login-link {
+    display: none;
+  }
+}

@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+    --color1: #00ccbe;
+    /* Cor Teal Principal */
+    --color2: #09a6a3;
+    /* Cor Teal Escura (Botões, Ícones) */
+    --color3: #9dbfaf;
+    --color4: #edebc9;
+    --color5: #fcf9d8;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: var(--color1);
+    justify-content: center;
+    align-items: center;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+    width: 900px;
+    height: 520px;
+    display: flex;
+    background-color: #fff;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* IMAGEM */
+.form-image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.form-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FORMULÁRIO */
+.form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 50px;
+}
+
+.form-header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.title h1 {
+    font-size: 30px;
+    color: #333;
+}
+
+.home-button button {
+    border: none;
+    background-color: var(--color1);
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.home-button button:hover {
+    background-color: var(--color2);
+}
+
+.home-button button a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #fff;
+    font-size: 15px;
+}
+
+/* Linha sob o título Login */
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--color1);
+    margin: 5px 0 0;
+    border-radius: 10px;
+}
+
+
+/* --- ESTILO PARA ÍCONES SOCIAIS --- */
+.social-login {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    /* CENTRALIZA OS ÍCONES */
+    gap: 15px;
+    width: 100%;
+    padding-left: 0;
+}
+
+/* Estilo do Ícone (Círculo Transparente e Borda) */
+.social-icons .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+
+    /* ESTILIZAÇÃO DO TEMA */
+    background-color: transparent;
+    color: var(--color2);
+    border: 2px solid var(--color2);
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efeito Hover */
+.social-icons .icon:hover {
+    transform: translateY(-2px);
+    background-color: var(--color2);
+    color: #fff;
+    border-color: var(--color2);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+/* CAMPOS DE INPUT */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.input-box input {
+    margin: 5px 0;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.08);
+    font-size: 16px;
+}
+
+/* Checkbox (Manter-se conectado) */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color2);
+}
+
+.checkbox-container label {
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Botão Entrar */
+#loginButton {
+    width: 100%;
+    margin-top: 25px;
+    /* Espaçamento após os campos */
+    border: none;
+
+    /* Cores Invertidas para Destaque: Verde Escuro como principal */
+    background-color: var(--color2);
+    /* Cor Teal Escura (#09a6a3) */
+
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+#loginButton:hover {
+    background-color: var(--color1);
+    /* Cor Teal Principal (#00ccbe) no hover */
+}
+
+/* Link de Cadastro */
+.register-link {
+    margin-top: 25px;
+    font-size: 15px;
+    color: #555;
+    text-align: center;
+}
+
+.register-link a {
+    color: var(--color2);
+    font-weight: 700;
+    text-decoration: none;
+    /* REMOVE O SUBLINHADO */
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.register-link a:hover {
+    color: var(--color1);
+    text-decoration: underline;
+    /* Adiciona sublinhado apenas no hover */
+}
+
+/* --- AJUSTES DE RESPONSIVIDADE (MOBILE) --- */
+@media screen and (max-width: 1330px) {
+    .container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .form-image {
+        display: none;
+    }
+
+    .container {
+        width: 90%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .form {
+        width: 100%;
+        padding: 30px 25px;
+    }
+
+    /* Os ícones já estarão centralizados por causa da regra geral do .social-icons */
+}

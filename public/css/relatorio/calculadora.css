@@ -1,0 +1,88 @@
+/* ========================================================= */
+/* AJUSTE 1: PROGRESSO RUMO À META (Dashboard) */
+/* ========================================================= */
+
+.dashboard-content h3 {
+    /* Mantém o estilo de título principal da seção */
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* --- Cards de Métricas (Peso/Meta/Calorias) --- */
+.progress-grid {
+    /* Garante o layout de grade (Grid) para os cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    /* Estilo Base: Usa fundo branco e borda sutil */
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 25px 20px; /* Aumenta o padding vertical */
+    text-align: center;
+    box-shadow: 0 4px 10px var(--shadow-color-subtle);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s;
+}
+
+.metric-card:hover {
+    transform: translateY(-3px); /* Efeito sutil ao passar o mouse */
+}
+
+.metric-card i {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.metric-value {
+    font-size: 2.8rem; /* DESTAQUE: Fonte maior para o valor principal */
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.metric-card .unit {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--secondary-text);
+}
+
+.metric-label {
+    font-size: 1rem;
+    color: var(--secondary-text);
+    margin-top: 5px;
+    font-weight: 600; /* Texto da label mais forte */
+}
+
+
+/* --- Cores de Destaque para Cards Específicos --- */
+
+/* Peso Atual */
+.metric-card.current-weight {
+    border-left: 5px solid #ff9800; /* Borda lateral laranja para diferenciar */
+}
+
+/* Meta de Peso */
+.metric-card.target-weight {
+    border-bottom: 5px solid var(--primary-color); /* Borda inferior verde para meta */
+}
+
+/* Meta Diária (Calorias) */
+.metric-card.daily-target i {
+    color: #e53935; /* Ícone de fogo vermelho para calorias */
+}
+.metric-card.daily-target .metric-value {
+    color: #e53935; 
+}
+.metric-card.daily-target .unit {
+    color: #e53935;
+}

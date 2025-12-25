@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatório Semanal de Desempenho</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="css/relatorio/relatorio.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <nav
+        class="navbar max-w-full mx-auto flex items-center justify-between p-2"
+      >
+        <div class="logo-container flex items-center">
+          <img
+            src="img/abacate.png"
+            alt="Logo AvoNutri"
+            class="logo-img w-8 h-8"
+          />
+          <div class="logo text-lg font-bold text-white ml-1">AvoNutri</div>
+        </div>
+
+        <div
+          id="auth-status"
+          class="auth-buttons-container flex items-center gap-1"
+        >
+          <div id="user-info" class="user-profile-info hidden relative">
+            <i
+              id="user-profile-icon"
+              class="fas fa-user-circle text-xl text-white cursor-pointer"
+              aria-label="Perfil do usuário"
+              aria-expanded="false"
+              onclick="toggleProfileDropdownReport()"
+            >
+            </i>
+
+            <div id="user-info-dropdown" class="user-dropdown-box">
+              <div class="dropdown-header flex items-center gap-2">
+                <span id="user-display-name" class="font-medium">Usuário</span>
+              </div>
+              <div class="dropdown-body text-sm text-text-medium">
+                <span id="connection-date"></span>
+              </div>
+              <button id="logout-button" class="logout-dropdown-btn mt-1">
+                Sair
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="header-container max-w-7xl mx-auto px-4">
+      <button
+        onclick="history.back()"
+        class="back-button"
+        aria-label="Voltar à página anterior"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+      <h2 class="header-title">Relatório de Desempenho e Feedback</h2>
+    </div>
+
+    <div class="report-dashboard max-w-7xl mx-auto px-4">
+      <div class="lg-col-span-3 main-card">
+        <div class="controls-header">
+          <div>
+            <p
+              style="
+                font-size: 0.85rem;
+                color: var(--color-text-medium);
+                font-weight: 500;
+              "
+            >
+              Período de Análise Principal:
+            </p>
+            <p
+              id="selected-period-display"
+              style="
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: var(--color-text-dark);
+                margin-top: 0.2rem;
+              "
+            >
+              Visualização: Mês Completo
+            </p>
+            <p
+              id="user-id-display"
+              style="font-size: 0.7rem; color: #9ca3af; margin-top: 0.15rem"
+            ></p>
+          </div>
+
+          <div class="period-buttons w-md-auto">
+            <button
+              id="btn-mensal"
+              onclick="changeReportScope('monthly')"
+              class="active"
+            >
+              Mês
+            </button>
+            <button id="btn-semanal" onclick="changeReportScope('weekly')">
+              Semana
+            </button>
+          </div>
+        </div>
+
+        <div id="period-details-container" style="margin-bottom: 0.75rem"></div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <h4>Meta Calórica Média</h4>
+            <span id="kpi-meta">... kcal</span>
+          </div>
+
+          <div class="kpi-card">
+            <h4>Consumo Real Médio</h4>
+            <span id="kpi-real">... kcal</span>
+          </div>
+
+          <div id="kpi-desvio-card" class="kpi-card error">
+            <h4>Desvio Consolidado</h4>
+            <span id="kpi-desvio">...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-box lg-col-span-1">
+        <h3>Evolução de Peso (Últimas 4 Semanas)</h3>
+        <div class="chart-container">
+          <canvas id="weightChart"></canvas>
+        </div>
+        <p id="weight-trend-text" class="chart-info-text">Tendência: ...</p>
+        <div id="loading-weight" class="loading-overlay hidden">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <div class="chart-box lg-col-span-1">
+        <h3>Adesão à Dieta (Macros Médios)</h3>
+        <div class="macro-bar-container">
+          <canvas id="macroChart"></canvas>
+        </div>
+        <p id="macro-feedback-text" class="chart-info-text">
+          Feedback de Macros
+        </p>
+        <div id="loading-macros" class="loading-overlay hidden">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <div class="analise-patterns lg-col-span-1">
+        <h3>Análise de Observações / Padrões de Dificuldade</h3>
+        <div id="insight-text">Carregando insights...</div>
+        <div id="loading-insights" class="loading-overlay hidden">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <div class="feedback-ia-action lg-col-span-3 main-card overflow-hidden">
+        <h3>Preparação para Plano Adaptativo</h3>
+
+        <textarea
+          id="ai-prompt"
+          class="w-full"
+          rows="10"
+          aria-label="Prompt para geração de plano adaptativo"
+        >
+Análise de Desempenho:
+- Período: Últimos 7 dias (25 de out. - 31 de out.)
+- Meta Calórica Média: 3198 kcal
+- Consumo Real Médio: 3144 kcal
+- Desvio: -54 kcal
+- Tendência de Peso: Insuficiente para tendência
+- Feedback de Macros:
+- O consumo de Proteína foi alto (+278g).
+- O consumo de Carboidrato ficou abaixo (-291g).
+
+Com base nesses dados, gere um plano adaptativo focado em [ajustar metas calóricas e macros].</textarea
+        >
+
+        <div id="ai-response-container" class="hidden">
+          <h4>Plano Adaptativo Gerado:</h4>
+          <div id="ai-response-text"></div>
+        </div>
+
+        <button
+          id="btn-adaptar"
+          aria-label="Gerar novo plano adaptativo"
+          onclick="generateAdaptivePlan()"
+        >
+          Gerar Novo Plano Adaptativo
+        </button>
+
+        <div id="loading-ai" class="loading-overlay hidden">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/auth-check.js"></script>
+    <script src="js/relatorio.js"></script>
+  </body>
+</html>

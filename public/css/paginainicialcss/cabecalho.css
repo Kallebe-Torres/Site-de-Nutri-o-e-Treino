@@ -1,0 +1,415 @@
+:root {
+  --color1: #00ccbe;
+  --color2: #09a6a3;
+  --color3: #9dbfaf;
+  --color4: #edebc9;
+  --color5: #fcf9d8;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: var(--color2);
+  color: #fff;
+  padding: 15px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  /* bem alto para ficar acima das formas */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.header-scrolled {
+  background-color: var(--color2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Container principal do navbar */
+#navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10000;
+  /* garante que fique acima */
+}
+
+/* ===== LOGO ===== */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+.logo-img {
+  width: 50px;
+  height: auto;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: aliceblue;
+  white-space: nowrap;
+}
+
+/* ===== MENU ===== */
+#nav_list {
+  display: flex;
+  list-style: none;
+  gap: 48px;
+}
+
+.nav-item {
+  font-size: 1.1rem;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+.nav-item a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #00a644;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-item a:hover::after,
+.nav-item.active a::after {
+  width: 100%;
+}
+
+.nav-item a:hover {
+  color: #fff;
+}
+
+/* ===== BOTÕES ===== */
+#auth-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#user-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+#user-profile-info p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* BOTÃO DE LOGOUT */
+#logout-button {
+  background-color: var(--color1);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#logout-button:hover {
+  background-color: var(--color2);
+  transform: translateY(-2px);
+}
+
+/* BOTÕES DE LOGIN E CADASTRO */
+#login-signup-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-nav a {
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-nav .Login a,
+.btn-nav .Cadastro a {
+  background-color: var(--color1);
+  color: #fff;
+  border: 2px solid var(--color1);
+}
+
+.btn-nav .Login a:hover,
+.btn-nav .Cadastro a:hover {
+  background-color: var(--color2);
+  border-color: var(--color1);
+  color: #fff;
+}
+
+/* ===== ANIMAÇÕES DO HEADER ===== */
+.header .logo-container,
+.header #nav_list .nav-item,
+.header #auth-buttons-container a {
+  opacity: 0;
+  transform: translateY(-25px);
+}
+
+.header .logo-container.show,
+.header #nav_list .nav-item.show,
+.header #auth-buttons-container a.show {
+  animation: fadeInDown 0.8s ease forwards;
+}
+
+.header #nav_list .nav-item.show:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.header #nav_list .nav-item.show:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.header #nav_list .nav-item.show:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.header #nav_list .nav-item.show:nth-child(4) {
+  animation-delay: 0.5s;
+}
+
+.header #auth-buttons-container a.show:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.header #auth-buttons-container a.show:nth-child(2) {
+  animation-delay: 0.7s;
+}
+
+#auth-status {
+  position: relative;
+}
+
+/* Ícone do Perfil: Branco, como solicitado */
+#user-profile-icon {
+  font-size: 24px;
+  color: white !important;
+  /* Ícone Branco */
+  cursor: pointer;
+  margin-left: 10px;
+  /* Adiciona algum espaçamento se necessário */
+}
+
+/* O container principal do dropdown */
+.user-dropdown-box {
+  display: none;
+  /* ESCONDIDO POR PADRÃO */
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 220px;
+  /* Tornando a caixa um pouco menor */
+  background-color: #fff;
+  border: 1px solid #28a745;
+  /* Borda da cor principal do site */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Ajuste para melhor espaçamento interno */
+  padding: 0;
+}
+
+/* Estado Ativo: Mostra o dropdown */
+.user-dropdown-box.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho do Dropdown (Nome e Ícone Grande) */
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--color1);
+  /* Verde Principal do AvoGym */
+  color: white;
+  font-weight: bold;
+}
+
+#user-display-name {
+  font-size: 1em;
+  /* Tamanho um pouco menor */
+}
+
+.user-icon-large {
+  font-size: 24px;
+  /* Ícone de usuário grande */
+}
+
+/* Corpo do Dropdown (Status e Data) */
+.dropdown-body {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 15px;
+  /* Reduzindo o padding */
+  border-bottom: 1px solid #eee;
+}
+
+/* Status Conectado (Cor verde) */
+.dropdown-body span:first-child {
+  color: #28a745 !important;
+  font-weight: bold;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+/* Data de Conexão (Cor neutra, menor) */
+#connection-date {
+  color: #6c757d;
+  font-size: 0.75em;
+  margin-top: 2px;
+  /* Espaçamento menor */
+  margin-bottom: 5px;
+}
+
+.logout-dropdown-btn {
+  width: calc(100% - 30px);
+  margin: 10px 15px 15px 15px;
+  padding: 6px 10px;
+
+  /* Cores Personalizadas (Usando !important para forçar a prioridade sobre btn-default) */
+  background-color: #fcebeb !important;
+  /* Fundo vermelho CLARÍSSIMO */
+  color: #dc3545 !important;
+  /* Texto vermelho escuro */
+  border: 1px solid #dc3545 !important;
+  /* Borda vermelha escura */
+
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.logout-dropdown-btn:hover {
+  background-color: #f9d8d8 !important;
+  /* Fundo um pouco mais escuro no hover */
+}
+
+/* ===== BOTÕES DE LOGIN E CADASTRO (Estilo Botão Verde-Água) ===== */
+#login-link a {
+  /* Aplica o estilo de botão a ambos os links dentro de #login-link */
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  background-color: var(--color1);
+  /* Fundo Verde Principal */
+  color: #fff;
+  border: 2px solid var(--color1);
+}
+
+#login-link a:hover {
+  background-color: var(--color2);
+  /* Fundo Verde Escuro no Hover */
+  border-color: #00ccbe;
+  color: #fff;
+}
+
+.popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #00ccbe;
+    color: #fff;
+    padding: 15px 18px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    z-index: 99999;
+    font-size: 0.9rem;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== ANIMAÇÃO DE IMAGEM FLOAT ===== */
+.img-float {
+  animation: floatSide 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatSide {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(20px);
+  }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  #navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  #nav_list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background-color: var(--color2);
+    position: absolute;
+    top: 80px;
+    left: 0;
+    padding: 20px 0;
+  }
+
+  #auth-buttons-container {
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>AvoNutri - Sua Vida Saudável</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+      id="tailwind-css"
+      onload="console.log('Tailwind CSS carregado')"
+      onerror="console.error('Falha ao carregar Tailwind CDN. Tentando fallback local...'); this.href='./tailwind.min.css'; this.onerror=null;"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* --- [INÍCIO] Scroll Suave e Link Ativo --- */
+      html {
+        scroll-behavior: smooth;
+      }
+      section[id] {
+        scroll-margin-top: 70px;
+      }
+      #nav_list a.active-link::after {
+        width: 100%;
+        background-color: #4ade80;
+      }
+      #nav_list a:hover::after {
+        background-color: #4ade80;
+      }
+
+      /* Cores personalizadas inline */
+      .bg-avo1 {
+        background-color: #00ccbe;
+      }
+      .bg-avo2 {
+        background-color: #09a6a3;
+      }
+      .text-avo1 {
+        color: #00ccbe;
+      }
+      .text-avo2 {
+        color: #09a6a3;
+      }
+      .border-avo1 {
+        border-color: #00ccbe;
+      }
+
+      /* Fundo diagonal para #home */
+      #home::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 55%;
+        height: 100%;
+        background: linear-gradient(135deg, #09a6a3 50%, transparent 100%);
+        clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+        z-index: -1;
+      }
+
+      /* --- INÍCIO -> Código CSS para o Destaque do Card --- */
+      #funcionalidades .card {
+        transition: all 0.3s ease-in-out;
+      }
+      #funcionalidades .card.destaque {
+        background-color: #00ccbe; /* Cor bg-avo1 */
+        color: #ffffff; /* Cor text-white */
+        transform: translateY(-8px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      #funcionalidades .card.destaque h3,
+      #funcionalidades .card.destaque p,
+      #funcionalidades .card.destaque i {
+        color: #ffffff;
+      }
+
+      /* --- INÍCIO -> Novas Regras para o Botão DENTRO do Card Destacado --- */
+      #funcionalidades .card.destaque a {
+        background-color: #ffffff;
+        color: #00ccbe;
+        transition: transform 0.2s ease-in-out;
+      }
+      #funcionalidades .card.destaque a:hover {
+        transform: scale(1.03);
+      }
+
+      @media (max-width: 768px) {
+        #home::before {
+          width: 100%;
+          height: 50%;
+          clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%);
+        }
+      }
+
+      /* Animações Keyframes */
+      .animate-fadeInDown {
+        animation: fadeInDown 0.8s ease forwards;
+      }
+      .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Fallback de estilo seguro para imagens */
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      img:not([src]),
+      img[src=""] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans relative pt-16">
+    <header
+      class="bg-avo2 text-white py-4 px-6 fixed w-full top-0 z-50 transition-all duration-300"
+      id="header"
+    >
+      <nav class="flex justify-between items-center max-w-6xl mx-auto">
+        <div
+          class="flex items-center space-x-2 transform hover:scale-105 transition-transform duration-300"
+        >
+          <img src="img/abacate.png" alt="Logo AvoNutri" class="w-12 h-auto" />
+          <div class="text-xl font-bold">AvoNutri</div>
+        </div>
+        <button
+          class="md:hidden text-2xl focus:outline-none"
+          aria-label="Abrir menu"
+          onclick="toggleMenu()"
+        >
+          ☰
+        </button>
+        <ul
+          id="nav_list"
+          class="hidden md:flex space-x-12 flex-col md:flex-row absolute md:static top-16 right-0 w-full md:w-auto bg-avo2 md:bg-transparent p-4 md:p-0 text-center md:text-left"
+        >
+          <li class="nav-item">
+            <a
+              href="#home"
+              class="text-white font-semibold relative hover:text-white after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="#funcionalidades"
+              class="text-white font-semibold relative hover:text-white after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full"
+              >Funcionalidades</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="#contato"
+              class="text-white font-semibold relative hover:text-white after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full"
+              >Dúvidas</a
+            >
+          </li>
+        </ul>
+        <div id="auth-status" class="flex items-center space-x-2">
+          <div id="user-info" class="relative hidden">
+            <i
+              id="user-profile-icon"
+              class="fas fa-user-circle text-2xl cursor-pointer text-white"
+              aria-label="Perfil do usuário"
+              aria-expanded="false"
+            ></i>
+            <div
+              id="user-info-dropdown"
+              class="hidden absolute top-12 right-0 w-56 bg-white border border-avo1 shadow-lg rounded-lg flex-col"
+            >
+              <div
+                class="flex justify-between items-center p-3 bg-avo1 text-white"
+              >
+                <span id="user-display-name">Usuário</span>
+                <i class="fas fa-user-circle text-2xl"></i>
+              </div>
+              <div class="p-3 border-b border-gray-200">
+                <span id="connection-date" class="block text-gray-500 text-sm">
+                  <span class="text-green-600 font-bold">Verificando...</span>
+                </span>
+              </div>
+              <button
+                id="logout-button"
+                class="bg-red-100 text-red-600 border border-red-600 py-2 m-3 rounded-md hover:bg-red-200 transition-colors"
+              >
+                Sair
+              </button>
+            </div>
+          </div>
+          <div id="login-link" class="flex space-x-2">
+            <a
+              href="login.html"
+              class="bg-avo1 text-white py-2 px-4 rounded-full border-2 border-avo1 hover:bg-avo2 transition-all"
+              >Login</a
+            >
+            <a
+              href="Cadastro.html"
+              class="bg-avo1 text-white py-2 px-4 rounded-full border-2 border-avo1 hover:bg-avo2 transition-all"
+              >Cadastro</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content">
+      <section
+        id="home"
+        class="flex flex-col md:flex-row items-center justify-around min-h-screen p-8 relative overflow-hidden pt-24 md:pt-0"
+      >
+        <div
+          class="cta flex-1 max-w-lg pr-0 md:pr-10 z-10 text-center md:text-left opacity-0"
+          id="cta"
+        >
+          <h1
+            class="font-montserrat text-4xl md:text-5xl font-bold text-gray-800 mb-5"
+          >
+            Sua jornada para um corpo mais saudável e forte começa aqui
+            <span class="block text-2xl md:text-3xl font-medium text-avo1 mt-2"
+              >Alcance seus objetivos de forma inteligente.</span
+            >
+          </h1>
+
+          <h2
+            id="welcome-message"
+            class="text-2xl text-avo2 font-semibold mb-6"
+          ></h2>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Crie planos de dieta personalizados com base nos seus objetivos,
+            seja ganhar massa, perder peso ou manter uma alimentação
+            equilibrada.
+          </p>
+          <div class="cta_butao">
+            <a
+              href="criarPlano.html"
+              class="bg-avo1 text-white py-3 px-8 rounded-full shadow-md hover:bg-avo2 hover:-translate-y-1 hover:shadow-lg transition-all auth-required"
+              aria-label="Acesse para criar seu plano de dieta"
+            >
+              <i class="fas fa-arrow-right mr-2"></i> Acesse aqui!
+            </a>
+          </div>
+        </div>
+        <div
+          id="banner"
+          class="flex-1 flex justify-center items-center z-10 mt-10 md:mt-0 opacity-0"
+        >
+          <img
+            src="img/abacate.png"
+            alt="Prato saudável com alimentos nutritivos"
+            class="max-w-full h-auto rounded-lg shadow-xl"
+          />
+        </div>
+      </section>
+    </main>
+
+    <section
+      id="funcionalidades"
+      class="bg-white min-h-screen py-24 px-5 flex flex-col items-center justify-center"
+    >
+      <div class="container max-w-6xl text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-avo2 mb-12 relative">
+          Funcionalidades
+          <span
+            class="block w-20 h-1 bg-gradient-to-r from-avo1 to-avo2 mx-auto mt-2 rounded"
+          ></span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="card bg-gray-50 p-8 rounded-lg shadow-md hover:-translate-y-2 hover:shadow-lg transition-all opacity-0"
+            data-delay="0.2s"
+          >
+            <i class="fas fa-utensils text-3xl text-avo2 mb-4"></i>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Planos de Dieta
+            </h3>
+            <p class="text-gray-600 mb-6">
+              Monte refeições personalizadas com base nos seus objetivos: perda
+              de peso, ganho muscular ou saúde geral.
+            </p>
+            <a
+              href="criarPlano.html"
+              class="bg-avo2 text-white py-3 px-6 rounded-full shadow-md transition-colors duration-300 auth-required"
+              aria-label="Criar um plano de dieta personalizado"
+              >Criar Plano</a
+            >
+          </div>
+          <div
+            class="card bg-gray-50 p-8 rounded-lg shadow-md hover:-translate-y-2 hover:shadow-lg transition-all opacity-0"
+            data-delay="0.4s"
+          >
+            <i class="fas fa-clipboard-check text-3xl text-avo2 mb-4"></i>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Meu Acompanhamento de Dieta
+            </h3>
+            <p class="text-gray-600 mb-6">
+              Bora acompanhar essa evolução? Seu diário de bordo para o sucesso
+              fitness!
+            </p>
+            <a
+              href="acompamento.html"
+              class="bg-avo2 text-white py-3 px-6 rounded-full shadow-md transition-colors duration-300 auth-required relative z-10"
+              aria-label="Acessar acompanhamento de dieta"
+              >Acesse aqui o acompanhamento</a
+            >
+          </div>
+          <div
+            class="card bg-gray-50 p-8 rounded-lg shadow-md hover:-translate-y-2 hover:shadow-lg transition-all opacity-0"
+            data-delay="0.6s"
+          >
+            <i class="fas fa-chart-line text-3xl text-avo2 mb-4"></i>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Relatório da Semana
+            </h3>
+            <p class="text-gray-600 mb-6">
+              Vamos verificar como está indo o seu progresso!
+            </p>
+            <a
+              href="Relatorio.html"
+              class="bg-avo2 text-white py-3 px-6 rounded-full shadow-md transition-colors duration-300 auth-required"
+              aria-label="Consultar relatório semanal"
+              >Consulte já</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="bg-gray-100 py-24 px-5">
+      <div
+        class="container max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12"
+      >
+        <div class="contact-info">
+          <h2 class="text-3xl font-bold text-avo2 mb-6">Qual é a dúvida?</h2>
+          <p class="text-gray-600 mb-8">
+            Preencha o formulário e entraremos em contato com o suporte o mais
+            rápido possível.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center space-x-4">
+              <i class="fas fa-phone text-avo2 text-xl"></i>
+              <div>
+                <h4 class="font-semibold">Telefone</h4>
+                <span>(91) 99622-7393</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <i class="fas fa-map-marker-alt text-avo2 text-xl"></i>
+              <div>
+                <h4 class="font-semibold">Localização</h4>
+                <span
+                  >Rua Estevão, 13 - Bairro Dururu, Cidade São Paulo - SP</span
+                >
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <i class="fas fa-envelope text-avo2 text-xl"></i>
+              <div>
+                <h4 class="font-semibold">E-mail</h4>
+                <span>kallebe.silva@discente.ufra.edu.br</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <i class="fab fa-whatsapp text-avo2 text-xl"></i>
+              <div>
+                <h4 class="font-semibold">Whatsapp</h4>
+                <span>(91) 992419-2699</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form bg-white p-8 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Contatar</h3>
+          <form class="space-y-4">
+            <div
+              class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4"
+            >
+              <input
+                type="text"
+                placeholder="Nome"
+                class="w-full p-3 border border-gray-300 rounded-md focus:border-avo1 focus:ring-avo1 transition"
+                required
+              />
+              <input
+                type="email"
+                placeholder="E-mail"
+                class="w-full p-3 border border-gray-300 rounded-md focus:border-avo1 focus:ring-avo1 transition"
+                required
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="Assunto"
+              class="w-full p-3 border border-gray-300 rounded-md focus:border-avo1 focus:ring-avo1 transition"
+              required
+            />
+            <textarea
+              placeholder="Mensagem"
+              class="w-full p-3 border border-gray-300 rounded-md h-32 focus:border-avo1 focus:ring-avo1 transition"
+            ></textarea>
+            <button
+              type="submit"
+              class="bg-avo1 text-white py-3 px-6 rounded-full hover:bg-avo2 transition-all shadow-md"
+            >
+              Enviar mensagem
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-avo2 text-white py-6">
+      <div
+        class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center text-center md:text-left"
+      >
+        <span id="copyright">© 2025 AvoNutri - © 2025 Kallebe Torres</span>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="#" aria-label="WhatsApp" class="text-white hover:text-avo1"
+            ><i class="fab fa-whatsapp text-xl"></i
+          ></a>
+          <a href="#" aria-label="Instagram" class="text-white hover:text-avo1"
+            ><i class="fab fa-instagram text-xl"></i
+          ></a>
+          <a href="#" aria-label="Facebook" class="text-white hover:text-avo1"
+            ><i class="fab fa-facebook-f text-xl"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth-check.js"></script>
+  </body>
+</html>

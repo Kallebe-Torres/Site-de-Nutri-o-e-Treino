@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Histórico de Planos Salvos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Custom Tailwind configurations using CSS variables */
+      :root {
+        --color-primary: #00ccbe;
+        --color-secondary: #09a6a3;
+        --color-background-light: #f4f4f9;
+        --color-text: #333;
+        --color-text-soft: #666;
+        --color-light-bg: #f8f9fa;
+        --color-accent-bg: #e9ecef;
+        --color-shadow: rgba(0, 0, 0, 0.08);
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans bg-[var(--color-background-light)] text-[var(--color-text)] m-0 p-0 leading-6"
+  >
+    <header
+      class="bg-[var(--color-primary)] text-white p-5 text-center shadow-md"
+    >
+      <h1 class="mb-2.5 font-semibold text-2xl">Histórico de Planos Salvos</h1>
+      <nav class="flex justify-center gap-4">
+        <a
+          href="criarPlano.html"
+          class="inline-block px-4 py-2 bg-[var(--color-secondary)] text-white no-underline rounded-full transition-all duration-300 border-2 border-[var(--color-secondary)] hover:bg-[var(--color-primary)] hover:border-white hover:shadow-lg"
+        >
+          <i class="fas fa-plus-circle mr-1"></i>
+          Voltar para Geração
+        </a>
+
+        <a
+          href="acompanhamento.html"
+          class="inline-block px-4 py-2 bg-[var(--color-secondary)] text-white no-underline rounded-full transition-all duration-300 border-2 border-[var(--color-secondary)] hover:bg-[var(--color-primary)] hover:border-white hover:shadow-lg"
+        >
+          <i class="fas fa-calendar-check mr-1"></i>
+          Meu Acompanhamento
+        </a>
+      </nav>
+    </header>
+
+    <main
+      class="container w-[90%] max-w-3xl mx-auto my-8 p-8 bg-white rounded-xl shadow-lg"
+    >
+      <!-- IDs que o historico.js PROCURA -->
+      <ul id="planos-container" class="list-none p-0 m-0">
+        <p class="text-[var(--color-text-soft)]">Carregando seus planos...</p>
+      </ul>
+      <p id="status-message" class="text-[var(--color-text-soft)] mt-4"></p>
+    </main>
+
+    <!-- O SCRIPT DO HISTÓRICO PRECISA SER CARREGADO AQUI -->
+    <script src="js/historico.js"></script>
+  </body>
+</html>

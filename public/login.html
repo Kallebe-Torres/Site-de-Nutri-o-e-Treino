@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Login</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap");
+
+      :root {
+        --color1: #00ccbe; /* Cor Teal Principal */
+        --color2: #09a6a3;
+        --color3: #9dbfaf;
+        --color4: #edebc9;
+        --color5: #fcf9d8;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        background-color: var(--color1);
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* CONTAINER PRINCIPAL */
+      .container {
+        width: 900px;
+        height: 520px;
+        display: flex;
+        background-color: #fff;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      /* IMAGEM */
+      .form-image {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      .form-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* FORMULÁRIO */
+      .form {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        padding: 50px;
+      }
+
+      .form-header {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .title h1 {
+        font-size: 30px;
+        color: #333;
+      }
+
+      .home-button button {
+        border: none;
+        background-color: var(--color1);
+        padding: 8px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .home-button button:hover {
+        background-color: var(--color2);
+      }
+
+      .home-button button a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #fff;
+        font-size: 15px;
+      }
+
+      /* Linha sob o título Login */
+      .form-header h1::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: var(--color1);
+        margin: 5px 0 0;
+        border-radius: 10px;
+      }
+
+      /* --- ESTILO PARA ÍCONES SOCIAIS --- */
+      .social-login {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center; /* CENTRALIZA OS ÍCONES */
+        gap: 15px;
+        width: 100%;
+        padding-left: 0;
+        margin-bottom: 25px; /* Adicionado para espaçamento após os ícones sociais */
+      }
+
+      /* Estilo do Ícone (Círculo Transparente e Borda) */
+      .social-icons .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 18px;
+
+        /* ESTILIZAÇÃO DO TEMA */
+        background-color: transparent;
+        color: var(--color2);
+        border: 2px solid var(--color2);
+
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* Efeito Hover */
+      .social-icons .icon:hover {
+        transform: translateY(-2px);
+        background-color: var(--color2);
+        color: #fff;
+        border-color: var(--color2);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      /* CAMPOS DE INPUT */
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+      }
+
+      .input-box {
+        display: flex;
+        flex-direction: column;
+        position: relative; /* Para posicionar a mensagem de erro */
+      }
+
+      .input-box label {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .input-box input {
+        margin: 5px 0;
+        padding: 12px 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.08);
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
+
+      .input-box.error input {
+        border-color: #ff4d4f; /* Cor de erro */
+      }
+
+      /* Mensagem de Erro JS (Adicionado para suportar o JS fornecido) */
+      .error-message {
+        color: #ff4d4f;
+        font-size: 12px;
+        margin-top: -10px; /* Ajusta a posição para não aumentar demais o espaçamento */
+        margin-bottom: 5px;
+        min-height: 14px; /* Garante que o layout não mude quando o erro for removido */
+        font-weight: 500;
+      }
+
+      /* Checkbox (Manter-se conectado) */
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+        margin-bottom: 15px;
+      }
+
+      .checkbox-container input[type="checkbox"] {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        accent-color: var(--color2);
+      }
+
+      .checkbox-container label {
+        font-size: 15px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      /* Botão Entrar */
+      #loginButton {
+        width: 100%;
+        margin-top: 25px; /* Espaçamento após os campos */
+        border: none;
+
+        /* Cores Invertidas para Destaque: Verde Escuro como principal */
+        background-color: var(--color2); /* Cor Teal Escura (#09a6a3) */
+
+        padding: 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      #loginButton:hover {
+        background-color: var(--color1); /* Cor Teal Principal (#00ccbe) no hover */
+      }
+
+      /* Link de Cadastro */
+      .register-link {
+        margin-top: 25px;
+        font-size: 15px;
+        color: #555;
+        text-align: center;
+      }
+
+      .register-link a {
+        color: var(--color2);
+        font-weight: 700;
+        text-decoration: none; /* REMOVE O SUBLINHADO */
+        transition: color 0.3s, text-decoration 0.3s;
+      }
+
+      .register-link a:hover {
+        color: var(--color1);
+        text-decoration: underline;
+        /* Adiciona sublinhado apenas no hover */
+      }
+
+      .forgot-password {
+        text-align: right; /* Alinha o link à direita */
+        font-size: 14px;
+        margin-top: -10px; /* Ajusta para ficar perto da checkbox */
+        margin-bottom: 15px; /* Espaço antes do botão de login */
+      }
+
+      .forgot-password a {
+        color: var(--color2); /* Cor verde escura principal */
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .forgot-password a:hover {
+        color: var(--color1); /* Cor verde clara no hover */
+        text-decoration: underline;
+      }
+
+      /* --- AJUSTES DE RESPONSIVIDADE (MOBILE) --- */
+      @media screen and (max-width: 1330px) {
+        .container {
+          width: 80%;
+        }
+      }
+
+      @media screen and (max-width: 950px) {
+        .form-image {
+          display: none;
+        }
+
+        .container {
+          width: 90%;
+          height: auto;
+          flex-direction: column;
+        }
+
+        .form {
+          width: 100%;
+          padding: 30px 25px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="form-image">
+        <img src="img/loginAvonutri.png" alt="Avocado" />
+      </div>
+      <div class="form">
+        <form id="login-form">
+          <div class="form-header">
+            <div class="title">
+              <h1>Login</h1>
+            </div>
+            <div class="home-button">
+              <button type="button"><a href="index.html">Início</a></button>
+            </div>
+          </div>
+
+          <div class="social-icons">
+            <a
+              href="http://localhost:3001/auth/google"
+              class="icon"
+              aria-label="Login com Google"
+            >
+              <i class="fab fa-google"></i>
+            </a>
+          </div>
+
+          <div class="input-group">
+            <div class="input-box">
+              <label for="email">E-mail</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Digite seu e-mail"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="password">Senha</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Digite sua senha"
+                required
+              />
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="keepConnected" name="keepConnected" />
+              <label for="keepConnected">Manter-se conectado</label>
+            </div>
+            <div class="forgot-password">
+              <a href="forgot-password.htm">Esqueci a senha</a>
+            </div>
+          </div>
+
+          <button type="submit" id="loginButton">Entrar</button>
+
+          <div class="register-link">
+            <p>Não tem conta? <a href="Cadastro.html">Cadastrar</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const API_BASE_URL = "http://localhost:3001";
+
+      // FUNÇÕES DE SUPORTE (Para Validação e Feedback Visual)
+
+      function showError(input, message) {
+        const inputBox = input.parentElement;
+        // Cria ou encontra o span de erro
+        const errorSpan =
+          inputBox.querySelector(".error-message") ||
+          document.createElement("span");
+        if (!errorSpan.classList.contains("error-message")) {
+          errorSpan.classList.add("error-message");
+          inputBox.appendChild(errorSpan);
+        }
+        errorSpan.textContent = message;
+        inputBox.classList.add("error");
+      }
+
+      function clearError(input) {
+        const inputBox = input.parentElement;
+        const errorSpan = inputBox.querySelector(".error-message");
+        if (errorSpan) {
+          errorSpan.textContent = "";
+        }
+        inputBox.classList.remove("error");
+      }
+
+      function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+      }
+
+      // LÓGICA PRINCIPAL DE LOGIN (Executa após a validação)
+      async function handleLogin(event) {
+        event.preventDefault();
+
+        // 1. Pega os elementos de input
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+
+        // 2. Limpa e Valida o Formulário (Sua Lógica Frontend)
+        document
+          .querySelectorAll(".error-message")
+          .forEach((span) => (span.textContent = ""));
+        document
+          .querySelectorAll(".input-box")
+          .forEach((box) => box.classList.remove("error"));
+
+        let formIsValid = true;
+
+        if (emailInput.value.trim() === "" || !isValidEmail(emailInput.value)) {
+          showError(emailInput, "Por favor, digite um e-mail válido.");
+          formIsValid = false;
+        }
+
+        if (passwordInput.value.trim() === "") {
+          showError(passwordInput, "Por favor, digite sua senha.");
+          formIsValid = false;
+        }
+
+        if (!formIsValid) {
+          return;
+        }
+
+        // 3. Comunicação com o Backend
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: emailInput.value,
+              password: passwordInput.value,
+            }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            // SUCESSO NO LOGIN!
+            alert(data.message || "Login realizado com sucesso! ✅");
+
+            // Armazena o Token JWT
+            localStorage.setItem("userToken", data.token);
+
+            if (data.user) {
+              localStorage.setItem("user", JSON.stringify(data.user));
+            }
+
+            // Redireciona
+            window.location.href = "index.html";
+          } else {
+            // FALHA NA AUTENTICAÇÃO
+            alert(data.message || "Erro desconhecido ao fazer login. ❌");
+            showError(
+              passwordInput,
+              data.message || "Verifique suas credenciais."
+            );
+          }
+        } catch (error) {
+          console.error("Erro de rede ou servidor:", error);
+          alert(
+            "Não foi possível conectar ao servidor. Verifique se o backend está rodando."
+          );
+        }
+      }
+
+      // INICIALIZAÇÃO: O ÚNICO DOMContentLoaded-
+      document.addEventListener("DOMContentLoaded", () => {
+        const loginForm = document.getElementById("login-form");
+        const loginButton = document.getElementById("loginButton");
+
+        // Adiciona a função handleLogin ao evento 'submit' do formulário.
+        if (loginForm) {
+          loginForm.addEventListener("submit", handleLogin);
+        }
+
+        // Se houver um botão de login (útil caso o botão não seja tipo="submit" ou haja outras formas de submissão),
+        // ele também pode ser ligado, mas geralmente o 'submit' do formulário é preferido.
+        if (loginButton && !loginForm) {
+          // Previne duplicidade se o botão estiver dentro do form
+          loginButton.addEventListener("click", handleLogin);
+        }
+
+        // Limpeza de erro ao digitar
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+
+        emailInput?.addEventListener("input", () => clearError(emailInput));
+        passwordInput?.addEventListener("input", () =>
+          clearError(passwordInput)
+        );
+      });
+    </script>
+    <script>
+      // Função para verificar o status de login
+      async function checkLoginRedirect() {
+        const token = localStorage.getItem("userToken");
+
+        if (!token) {
+          // Se não houver token, permite que o usuário veja a página de login
+          document.body.style.opacity = "1";
+          return;
+        }
+
+        try {
+          // Tenta validar o token no backend
+          const response = await fetch("/api/auth/me", {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` },
+          });
+
+          if (response.ok) {
+            // Token válido! Redireciona para a página principal
+            window.location.href = "index.html";
+          } else {
+            // Token expirado/inválido, remove e permite login
+            localStorage.removeItem("userToken");
+            document.body.style.opacity = "1";
+          }
+        } catch (error) {
+          // Erro de rede/servidor, permite o login (mostra a página)
+          console.error("Erro de rede ao verificar login:", error);
+          document.body.style.opacity = "1";
+        }
+      }
+
+      // Esconde a página até a verificação ser feita
+      document.body.style.opacity = "0";
+      checkLoginRedirect();
+    </script>
+  </body>
+</html>

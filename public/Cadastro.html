@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+      id="tailwind-css"
+    />
+    <title>Cadastro</title>
+
+    <style>
+      :root {
+        --color1: #00ccbe; /* Teal Principal */
+        --color2: #09a6a3; /* Teal Escura (Destaque/Botões) */
+      }
+
+      /* Classes de cor para consistência */
+      .bg-\[\#00ccbe\] {
+        background-color: var(--color1) !important;
+      }
+      .bg-\[\#09a6a3\] {
+        background-color: var(--color2) !important;
+      }
+      .text-\[\#09a6a3\] {
+        color: var(--color2) !important;
+      }
+      .hover\:bg-\[\#00ccbe\]:hover {
+        background-color: var(--color1) !important;
+      }
+      .hover\:text-\[\#00ccbe\]:hover {
+        color: var(--color1) !important;
+      }
+
+      /* Estilo de erro */
+      .input-box.error input,
+      .input-box.error input:focus {
+        border-color: #ef4444; /* red-500 */
+        box-shadow: 0 0 0 1px #ef4444;
+      }
+
+      .terms-checkbox-group.error label {
+        color: #ef4444;
+      }
+
+      /* Estilo para a Modal */
+      .modal-bg {
+        /* Garante que o fundo da modal cubra tudo */
+        z-index: 9999;
+      }
+
+      .modal-content {
+        max-height: 90vh; /* Altura máxima da modal */
+        width: 95%; /* Ajuste para mobile */
+      }
+
+      /* Ajuste para a mensagem de erro do checkbox */
+      .terms-checkbox-group {
+        position: relative;
+        /* Adicionado padding para compensar a margem superior */
+        padding-top: 10px; 
+      }
+      .terms-checkbox-group .error-message {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding-top: 4px; /* Espaço entre o box e a mensagem de erro */
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#00ccbe] flex items-center justify-center min-h-screen font-sans"
+  >
+
+  <div id="global-message" class="global-message"></div>
+    <div
+      class="w-full max-w-4xl h-auto md:h-[80vh] flex flex-col md:flex-row bg-white shadow-xl rounded-lg overflow-hidden"
+    >
+      <div
+        class="w-full md:w-1/2 hidden md:flex items-center justify-center p-4 bg-gray-100 overflow-hidden"
+      >
+        <img
+          src="./img/loginAvonutri.png"
+          alt="Ilustração de Cadastro"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div
+        class="w-full md:w-1/2 flex flex-col justify-center items-center p-6 md:p-8"
+      >
+        <div class="w-full mb-6 flex justify-between items-center">
+          <div class="title">
+            <h1
+              class="text-2xl md:text-3xl font-bold text-gray-800 after:content-[''] after:block after:w-20 after:h-1 after:bg-[#00ccbe] after:mt-2 after:rounded-lg"
+            >
+              Cadastrar
+            </h1>
+          </div>
+          <div class="login-button">
+            <button
+              type="button"
+              class="bg-[#00ccbe] text-white px-4 py-2 rounded-lg hover:bg-[#09a6a3] transition-colors duration-300"
+            >
+              <a href="index.html" class="no-underline text-white font-medium"
+                >Início</a
+              >
+            </button>
+          </div>
+        </div>
+
+        <form action="#" id="registration-form" class="w-full space-y-4">
+          <div class="flex flex-wrap -mx-2">
+            <div class="w-full md:w-1/2 px-2 mb-4 input-box">
+              <label
+                for="firstname"
+                class="block text-sm font-semibold text-gray-700"
+                >Primeiro Nome</label
+              >
+              <input
+                id="firstname"
+                type="text"
+                name="firstname"
+                placeholder="Digite seu primeiro nome"
+                required
+                class="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00ccbe] hover:bg-gray-50 transition duration-150"
+              />
+              <span
+                class="error-message text-red-500 text-xs mt-1 block h-4"
+              ></span>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4 input-box">
+              <label
+                for="lastname"
+                class="block text-sm font-semibold text-gray-700"
+                >Sobrenome</label
+              >
+              <input
+                id="lastname"
+                type="text"
+                name="lastname"
+                placeholder="Digite seu sobrenome"
+                required
+                class="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00ccbe] hover:bg-gray-50 transition duration-150"
+              />
+              <span
+                class="error-message text-red-500 text-xs mt-1 block h-4"
+              ></span>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4 input-box">
+              <label
+                for="email"
+                class="block text-sm font-semibold text-gray-700"
+                >E-mail</label
+              >
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Digite seu e-mail"
+                required
+                class="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00ccbe] hover:bg-gray-50 transition duration-150"
+              />
+              <span
+                class="error-message text-red-500 text-xs mt-1 block h-4"
+              ></span>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4 input-box">
+              <label
+                for="number"
+                class="block text-sm font-semibold text-gray-700"
+                >Celular</label
+              >
+              <input
+                id="number"
+                type="tel"
+                name="number"
+                placeholder="(xx) xxxxx-xxxx"
+                required
+                class="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00ccbe] hover:bg-gray-50 transition duration-150"
+              />
+              <span
+                class="error-message text-red-500 text-xs mt-1 block h-4"
+              ></span>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4 input-box">
+              <label
+                for="password"
+                class="block text-sm font-semibold text-gray-700"
+                >Senha</label
+              >
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Digite sua senha"
+                required
+                class="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00ccbe] hover:bg-gray-50 transition duration-150"
+              />
+              <span
+                class="error-message text-red-500 text-xs mt-1 block h-4"
+              ></span>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4 input-box">
+              <label
+                for="confirmPassword"
+                class="block text-sm font-semibold text-gray-700"
+                >Confirme sua Senha</label
+              >
+              <input
+                id="confirmPassword"
+                type="password"
+                name="confirmPassword"
+                placeholder="Digite sua senha novamente"
+                required
+                class="w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#00ccbe] hover:bg-gray-50 transition duration-150"
+              />
+              <span
+                class="error-message text-red-500 text-xs mt-1 block h-4"
+              ></span>
+            </div>
+          </div>
+
+          <div class="terms-checkbox-group flex items-start pt-2">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              required
+              class="mt-1 mr-2 cursor-pointer text-[#09a6a3] focus:ring-[#09a6a3]"
+            />
+            <label
+              for="terms"
+              class="text-sm text-gray-600 leading-relaxed cursor-pointer"
+            >
+              Ao se cadastrar, você concorda com nossos
+              <a
+                href="#"
+                id="abrir-termos"
+                class="text-[#09a6a3] font-bold hover:text-[#00ccbe] underline transition-colors duration-300"
+                role="button"
+                >Termos e Políticas</a
+              >.
+            </label>
+            <span class="error-message text-red-500 text-xs mt-1 block"></span>
+          </div>
+
+          <div class="continue-button pt-4">
+            <button
+              type="submit"
+              class="w-full bg-[#09a6a3] text-white py-3 rounded-lg shadow-md hover:bg-[#00ccbe] hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 font-semibold"
+            >
+              Continuar
+            </button>
+          </div>
+
+          <div class="login-text text-center pt-2 text-sm">
+            <span>Já tem uma conta?
+              <a
+                href="login.html"
+                class="text-[#09a6a3] font-bold hover:text-[#00ccbe] hover:underline transition-colors duration-300"
+                >Login</a
+              ></span
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ESTRUTURA DA MODAL -->
+    <div id="modal-termos" class="modal-bg hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="modal-content bg-white p-6 rounded-lg shadow-2xl max-w-lg w-full max-h-screen overflow-y-auto">
+            <div class="modal-header flex justify-between items-center border-b pb-2 mb-4">
+                <h3 class="text-xl font-bold">Termos de Uso e Política de Dados</h3>
+                <button id="fechar-modal" class="text-gray-500 text-2xl leading-none hover:text-gray-900 focus:outline-none">&times;</button>
+            </div>
+            
+            <div class="modal-body text-sm text-gray-700 space-y-3">
+                <p><strong>Aviso de Protótipo e LGPD (Lei Geral de Proteção de Dados):</strong> Este projeto AvoNutri é um protótipo funcional desenvolvido exclusivamente para fins acadêmicos (TCC) e não possui fins comerciais ou de diagnóstico médico. Ao utilizar este sistema, o usuário está ciente e consente que os dados informados (nome, e-mail, peso, altura, objetivo) serão utilizados exclusivamente para:</p>
+                
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>Geração do plano nutricional assistido por Inteligência Artificial (IA).</li>
+                    <li>Armazenamento seguro (hashing bcrypt) e restrito ao próprio usuário no banco de dados.</li>
+                    <li>Análise de métricas de progresso para o TCC.</li>
+                </ul>
+
+                <p>O tratamento dos dados está em conformidade com o Princípio da Finalidade e da Necessidade da LGPD, pois coletamos apenas o estritamente necessário para o funcionamento do protótipo.</p>
+                
+                <p><strong>Segurança e Responsabilidade:</strong> Suas senhas são armazenadas utilizando o algoritmo de *hash* seguro (`bcrypt`). As sugestões de dieta geradas pela IA são apenas informativas e não substituem, sob nenhuma circunstância, a avaliação de um profissional de saúde qualificado (nutricionista ou médico). O desenvolvedor não se responsabiliza por quaisquer danos ou efeitos adversos causados pelo uso das informações geradas.</p>
+            </div>
+
+            <div class="modal-footer pt-4 mt-4 border-t flex justify-end">
+                <button id="aceitar-e-fechar" class="bg-[#09a6a3] text-white px-4 py-2 rounded hover:bg-[#00ccbe] transition font-semibold">Entendi e Aceito</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      // Configuração da API
+      const API_BASE_URL = "http://localhost:3001";
+
+      // --- Funções de Suporte ---
+
+      function showError(input, message) {
+        const parentElement = input.closest(
+          ".input-box, .terms-checkbox-group"
+        );
+        if (!parentElement) return;
+
+        const errorSpan = parentElement.querySelector(".error-message");
+        if (errorSpan) {
+          errorSpan.textContent = message;
+        }
+        parentElement.classList.add("error");
+
+        if (input.tagName === "INPUT" && input.type !== "checkbox") {
+          input.classList.add("border-red-500", "focus:ring-red-500");
+          input.classList.remove("focus:ring-[#00ccbe]");
+        }
+      }
+
+      function clearError(input) {
+        const parentElement = input.closest(
+          ".input-box, .terms-checkbox-group"
+        );
+        if (!parentElement) return;
+
+        const errorSpan = parentElement.querySelector(".error-message");
+        if (errorSpan) {
+          errorSpan.textContent = "";
+        }
+        parentElement.classList.remove("error");
+
+        if (input.tagName === "INPUT" && input.type !== "checkbox") {
+          input.classList.remove("border-red-500", "focus:ring-red-500");
+          parentElement.querySelector('input')?.classList.add("focus:ring-[#00ccbe]");
+        }
+      }
+
+      function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+      }
+
+      function formatPhoneNumber(phone) {
+        phone = phone.replace(/\D/g, "");
+        const ddd = phone.substring(0, 2);
+        const part1 = phone.substring(2, 7);
+        const part2 = phone.substring(7, 11);
+
+        let formatted = "";
+        if (ddd.length > 0) formatted += `(${ddd}`;
+        if (ddd.length === 2) formatted += `) `;
+        if (part1.length > 0) formatted += part1;
+        if (part1.length === 5 && part2.length > 0) formatted += `-${part2}`;
+
+        return formatted;
+      }
+
+      function isValidPhoneNumber(phone) {
+        const cleaned = phone.replace(/\D/g, "");
+        return cleaned.length === 10 || cleaned.length === 11;
+      }
+
+      function isValidPassword(password) {
+        const re =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@&%])[A-Za-z\d@&%]{8,}$/;
+        return re.test(password);
+      }
+
+      // --- Lógica da Modal ---
+      function setupModalListeners() {
+        const modal = document.getElementById('modal-termos');
+        const abrirBtn = document.getElementById('abrir-termos');
+        const fecharBtn = document.getElementById('fechar-modal');
+        const aceitarBtn = document.getElementById('aceitar-e-fechar');
+        const checkbox = document.getElementById('terms');
+
+        if (!modal) return;
+
+        const fecharModal = () => {
+            modal.classList.add('hidden');
+        };
+
+        // Abrir Modal
+        abrirBtn.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            modal.classList.remove('hidden');
+        });
+
+        // Fechar Modal (botão X)
+        fecharBtn.addEventListener('click', fecharModal);
+
+        // Fechar Modal (clique no fundo)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                fecharModal();
+            }
+        });
+
+        // Aceitar e fechar (e marcar o checkbox)
+        aceitarBtn.addEventListener('click', () => {
+            checkbox.checked = true; // Marca o checkbox
+            clearError(checkbox); // Limpa o erro, se houver
+            fecharModal();
+        });
+      }
+
+
+      // Lógica Principal de Cadastro
+      async function handleRegistration(event) {
+        event.preventDefault();
+
+        const firstname = document.getElementById("firstname");
+        const lastname = document.getElementById("lastname");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        const number = document.getElementById("number");
+        const termsCheckbox = document.getElementById("terms");
+
+        // 2. Limpar Erros e Iniciar Validação
+        let formIsValid = true;
+
+        // Limpeza inicial de erros (ajustado para ser mais eficiente)
+        const inputs = [firstname, lastname, email, password, confirmPassword, number, termsCheckbox];
+        inputs.forEach(input => clearError(input));
+
+        // Validação de Campos
+        if (firstname.value.trim() === "") {
+          showError(firstname, "Primeiro nome é obrigatório.");
+          formIsValid = false;
+        }
+        if (lastname.value.trim() === "") {
+          showError(lastname, "Sobrenome é obrigatório.");
+          formIsValid = false;
+        }
+        if (!isValidEmail(email.value)) {
+          showError(email, "Email inválido ou obrigatório.");
+          formIsValid = false;
+        }
+        if (!isValidPhoneNumber(number.value)) {
+          showError(
+            number,
+            "Número de telefone inválido. Formato (XX) XXXXX-XXXX."
+          );
+          formIsValid = false;
+        }
+        if (!isValidPassword(password.value)) {
+          showError(
+            password,
+            "Mínimo 8 caracteres, com Maiúsculas, minúsculas, números e um dos símbolos (@, &, %)."
+          );
+          formIsValid = false;
+        }
+        if (password.value !== confirmPassword.value) {
+          showError(confirmPassword, "As senhas não coincidem.");
+          formIsValid = false;
+        }
+        if (!termsCheckbox.checked) {
+          showError(
+            termsCheckbox,
+            "Você deve aceitar os termos para continuar."
+          );
+          formIsValid = false;
+        }
+
+        if (!formIsValid) {
+          return;
+        }
+
+        // 3. Preparar e Enviar Dados
+        const cleanedPhoneNumber = number.value.replace(/\D/g, "");
+
+        const userData = {
+          nome: firstname.value.trim(),
+          sobrenome: lastname.value.trim(),
+          email: email.value,
+          password: password.value,
+          celular: cleanedPhoneNumber,
+        };
+
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(userData),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            // USAR TOAST OU MODAL (NUNCA alert())
+            alert(
+              "✅ Cadastro concluído com sucesso! Redirecionando para o login."
+            );
+            localStorage.setItem("lastRegisteredEmail", email.value);
+            window.location.href = "login.html";
+          } else {
+            const errorMessage =
+              data.message ||
+              data.error ||
+              "Erro ao tentar cadastrar. Verifique o console.";
+            
+            // USAR TOAST OU MODAL (NUNCA alert())
+            alert("❌ " + errorMessage);
+
+            if (
+              errorMessage.includes("email") ||
+              errorMessage.includes("Email") ||
+              errorMessage.includes("E-mail já cadastrado")
+            ) {
+              showError(email, errorMessage);
+            }
+          }
+        } catch (error) {
+          console.error("Erro de conexão/servidor:", error);
+           // USAR TOAST OU MODAL (NUNCA alert())
+          alert(
+            "❌ Falha na comunicação com o servidor. Verifique se o backend está rodando."
+          );
+        }
+      }
+
+      // Inicialização e Listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("registration-form");
+        const firstname = document.getElementById("firstname");
+        const lastname = document.getElementById("lastname");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        const number = document.getElementById("number");
+        const termsCheckbox = document.getElementById("terms");
+
+        if (form) {
+          form.addEventListener("submit", handleRegistration);
+        }
+
+        // --- Adiciona Listeners de Limpeza ---
+        firstname?.addEventListener("input", () => clearError(firstname));
+        lastname?.addEventListener("input", () => clearError(lastname));
+        email?.addEventListener("input", () => clearError(email));
+        password?.addEventListener("input", () => clearError(password));
+        termsCheckbox?.addEventListener("change", () =>
+          clearError(termsCheckbox)
+        );
+
+        confirmPassword?.addEventListener("input", () => {
+          clearError(confirmPassword);
+          clearError(password);
+        });
+
+        // Formatação automática do telefone
+        number?.addEventListener("input", (event) => {
+          event.target.value = formatPhoneNumber(event.target.value);
+          clearError(number);
+        });
+
+        // --- Inicializa a Modal ---
+        setupModalListeners();
+      });
+    </script>
+  </body>
+</html>

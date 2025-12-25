@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('cabecalho.css');
+@import url('home.css');
+@import url('funcionalidade.css');
+@import url('escolhaPlano.css');
+@import url('contato.css');
+@import url('footer.css');
+
+/* 🎨 Paleta de cores */
+:root {
+  --color1: #00ccbe;
+  --color2: #09a6a3;
+  --color3: #9dbfaf;
+  --color4: #edebc9;
+  --color5: #fcf9d8;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #ffffff10;
+  overflow-x: hidden;
+}
+
+/* Estado inicial */
+#home,
+#funcionalidades,
+#planos,
+#contato,
+.features .card,
+.plans .plan {
+  opacity: 0;
+  transform: translateY(80px); /* mais deslocado pra dar impacto */
+  transition: opacity 1.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+              transform 1.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Quando aparece */
+#home.show,
+#funcionalidades.show,
+#planos.show,
+#contato.show,
+.features .card.show,
+.plans .plan.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.features .card,
+.plans .plan {
+  opacity: 0;
+  transition: opacity 1.2s ease; /* só opacidade */
+}
+
+.features .card.show,
+.plans .plan.show {
+  opacity: 1;
+}
+
+
+
+
+/* 🔷 Formas no fundo */
+.background-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: teal;
+  z-index: 0; /* sempre atrás */
+}
+
+/* 🔝 Conteúdo sempre acima */
+main, section, footer, .content {
+  position: relative;
+  z-index: 10;
+  color: #111;
+}

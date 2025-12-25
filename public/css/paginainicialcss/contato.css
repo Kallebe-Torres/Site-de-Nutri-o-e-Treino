@@ -1,0 +1,165 @@
+:root {
+    --color1: #00ccbe;
+    --color2: #09a6a3;
+    --color3: #9dbfaf;
+    --color4: #edebc9;
+    --color5: #fcf9d8;
+}
+
+/* Seção de Contato em Tela Cheia */
+.contact {
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    padding: 60px 20px;
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.contact .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+/* Informações de Contato (Lado Esquerdo) */
+.contact-info {
+    padding: 20px;
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.contact-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info .info-item i {
+    font-size: 1.5rem;
+    color: #09a6a3;
+}
+
+.contact-info .info-content h4 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #333;
+}
+
+.contact-info .info-content span {
+    display: block;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Formulário de Contato (Lado Direito) */
+.contact-form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form .form-group-inline {
+    display: flex;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-form .btn {
+    padding: 12px 25px;
+    background-color: var(--color1);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form .btn:hover {
+    background-color: #007bff;
+}
+
+/* Lado Direito - Formulário de Contato */
+.contact-form {
+    background-color: #fff;
+    padding: 40px;
+    margin-top: 100px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    margin-top: 30px; /* Adiciona espaçamento no topo */
+    color: #333;
+}
+/* ... restante do código ... */
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

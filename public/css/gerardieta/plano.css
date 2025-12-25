@@ -1,0 +1,650 @@
+/* ========================================================= */
+/* 1. VARIÁVEIS DE COR (PALETA ATUALIZADA) */
+/* ========================================================= */
+:root {
+    --primary-color: #1A8F43;
+    /* Forest Green Principal */
+    --primary-light: #38A85B;
+    /* Verde claro para botões e foco */
+    --primary-dark: #147D34;
+    /* Verde escuro para hover */
+    --background-color: #F8FDF9;
+    /* Fundo muito claro e limpo */
+    --card-background: #fff;
+    --text-color: #212121;
+    /* Texto mais escuro */
+    --input-bg-color: #FFFFFF;
+    /* AGORA BRANCO PURO (Ajuste 1) */
+    --border-color: #e5e7eb;
+    --error-color: #d32f2f;
+    /* Vermelho mais forte */
+    --shadow-color-subtle: rgba(0, 0, 0, 0.05);
+    /* Sombra suave para o card */
+    --shadow-color-lifted: rgba(0, 0, 0, 0.12);
+    /* Sombra para elementos interativos */
+
+    /* Cores para o Alerta (Lembre-se) */
+    --warning-bg: #fffde7;
+    /* Amarelo clarinho */
+    --warning-border: #ffeb3b;
+    /* Amarelo para borda */
+    --warning-text: #a0522d;
+    /* Marrom escuro para o texto */
+}
+
+/* ========================================================= */
+/* 2. ESTILOS GLOBAIS E DE LAYOUT */
+/* ========================================================= */
+body {
+    font-family: 'Inter', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+.page-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.plan-card {
+    background-color: var(--card-background);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px var(--shadow-color-subtle);
+    padding: 0;
+    width: 100%;
+    max-width: 932px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ========================================================= */
+/* 3. CABEÇALHO E PROGRESSO (WIZARD) */
+/* ========================================================= */
+.card-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    padding: 25px 30px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-header .back-arrow {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    padding-right: 15px;
+}
+
+.card-header .back-arrow:hover {
+    color: var(--primary-color);
+}
+
+.card-header h2 {
+    font-size: 1.65rem;
+    font-weight: 600;
+    margin: 0 auto;
+    color: var(--primary-color);
+    flex-grow: 1;
+    text-align: center;
+}
+
+#progress-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    right: 45px;
+    height: 4px;
+    background-color: var(--border-color);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.step-indicator {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    color: var(--text-color);
+    font-weight: bold;
+    text-align: center;
+    z-index: 2;
+}
+
+.step-indicator.active,
+.step-indicator.completed {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    box-shadow: 0 0 0 5px rgba(26, 143, 67, 0.2);
+}
+
+/* ========================================================= */
+/* 4. FORMULÁRIO E INPUTS */
+/* ========================================================= */
+#plan-form {
+    display: block;
+    padding: 0;
+}
+
+.form-step {
+    display: none;
+    padding: 20px 30px 10px;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.form-step h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+    align-items: center;
+}
+
+.form-row .form-cell:first-child {
+    flex: 1;
+    max-width: 60%;
+    padding-right: 15px;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-row .input-cell {
+    flex-basis: 40%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.inline-input,
+.inline-select,
+.inline-textarea {
+    width: 100% !important;
+    padding: 14px 18px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    background-color: var(--input-bg-color);
+    /* BRANCO PURO */
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    text-align: left;
+    resize: none;
+    min-height: 50px;
+}
+
+.inline-input:focus,
+.inline-select:focus,
+.inline-textarea:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(56, 168, 91, 0.3);
+}
+
+.inline-input.input-error,
+.inline-select.input-error,
+.inline-textarea.input-error {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.2);
+}
+
+/* ========================================================= */
+/* 5. BOTÕES DE NAVEGAÇÃO */
+/* ========================================================= */
+#form-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+#form-navigation.result-nav-flex {
+    justify-content: center;
+    gap: 30px;
+}
+
+.btn-plan-nav {
+    padding: 15px 28px;
+    border: 2px solid var(--primary-light);
+    border-radius: 12px;
+    background-color: var(--card-background);
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color-subtle);
+}
+
+.btn-plan-nav:hover {
+    background-color: var(--primary-light);
+    color: var(--card-background);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px var(--shadow-color-lifted);
+}
+
+#submit-plan-btn {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    margin-left: 50px;
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: none;
+    box-shadow: 0 8px 15px var(--shadow-color-subtle);
+}
+
+#submit-plan-btn:hover:not([disabled]) {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--shadow-color-lifted);
+}
+
+#submit-plan-btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 15px 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color-subtle);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+}
+
+.btn-primary:hover:not([disabled]) {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px var(--shadow-color-lifted);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-light);
+}
+
+.btn-secondary:hover:not([disabled]) {
+    background-color: var(--background-color);
+    color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 5px var(--shadow-color-subtle);
+}
+
+
+#form-navigation.result-nav-flex .prev-btn,
+#form-navigation.result-nav-flex .next-btn,
+#form-navigation.result-nav-flex #submit-plan-btn {
+    display: none !important;
+}
+
+
+/* ========================================================= */
+/* 6. ESTILOS DA ETAPA 5 (RESULTADO DO PLANO) */
+/* ========================================================= */
+
+.plan-output-container {
+    padding: 20px 30px 10px;
+}
+
+/* ------------------ Ações no Topo do Plano (Botão PDF) ------------------ */
+
+.plan-actions-top button {
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    box-shadow: 0 2px 4px var(--shadow-color-subtle);
+}
+
+.plan-actions-top button:hover {
+    background-color: var(--border-color);
+}
+
+/* ------------------ Bloco de Resumo e Meta (Primeiro Bloco Principal) ------------------ */
+
+.plan-summary {
+    background-color: #e8f5e9;
+    border: 1px solid var(--primary-light);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    /* Reduzido o espaço para encaixar o Lembre-se */
+    box-shadow: 0 4px 10px var(--shadow-color-subtle);
+}
+
+.plan-summary h3 {
+    font-size: 1.6rem;
+    color: var(--primary-dark);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 10px;
+}
+
+.plan-summary p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.plan-summary .highlight-kcal {
+    font-weight: 700;
+    color: var(--error-color);
+    background-color: #ffebee;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* ------------------ Bloco Lembre-se (Segundo Bloco - ABAIXO DO RESUMO) ------------------ */
+.alert-box {
+    background-color: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    border-left: 5px solid var(--warning-border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 30px;
+    /* Mais espaço após o Lembre-se */
+    font-size: 0.95rem;
+    color: var(--warning-text);
+    box-shadow: 0 2px 4px var(--shadow-color-subtle);
+}
+
+.alert-box strong {
+    font-size: 1.1rem;
+}
+
+/* ------------------ Refeições ------------------ */
+
+h4 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.meal-list {
+    list-style: none;
+    padding: 0;
+}
+
+.meal-item {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px var(--shadow-color-subtle);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.meal-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color-subtle);
+}
+
+.meal-header {
+    display: flex;
+    /* AJUSTE: Permite que Nome e Horário fiquem lado a lado */
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+    /* FUNDO CLARO */
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.meal-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.meal-time {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.meal-detail {
+    padding: 15px 20px;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* ------------------ Observações (Último Bloco) ------------------ */
+
+.plan-notes {
+    font-style: italic;
+    color: #666;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    /* FUNDO CLARO */
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-light);
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* ========================================================= */
+/* 2.5. CABEÇALHO PRINCIPAL (MAIN HEADER) */
+/* ========================================================= */
+.main-header {
+    background-color: var(--card-background); /* Branco */
+    box-shadow: 0 4px 12px var(--shadow-color-subtle); /* Sombra sutil */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 15px 40px; /* Mais padding nas laterais */
+    position: sticky; /* Fixo no topo */
+    top: 0;
+    z-index: 2000; /* Garante que fique acima de tudo */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.header-logo img {
+    width: 36px; /* Levemente maior */
+    height: 36px;
+}
+
+.header-logo h1 {
+    font-size: 1.65rem;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 700;
+}
+
+.history-link {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 10px 18px;
+    border-radius: 10px;
+    
+    color: var(--primary-color);
+    border: 2px solid var(--primary-light);
+    background-color: transparent;
+    transition: all 0.3s ease;
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.history-link:hover {
+    background-color: var(--primary-light);
+    color: var(--card-background);
+    border-color: var(--primary-light);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 5px var(--shadow-color-subtle);
+}
+
+
+
+/* ========================================================= */
+/* 7. MEDIA QUERIES (Responsividade) */
+/* ========================================================= */
+
+@media (max-width: 600px) {
+    .plan-card {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .card-header,
+    #progress-bar,
+    .form-step,
+    .plan-output-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-row .form-cell:first-child {
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-size: 1rem;
+    }
+
+    .form-row .input-cell {
+        flex-basis: 100%;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .inline-input,
+    .inline-select,
+    .inline-textarea {
+        font-size: 1rem;
+        padding: 12px 15px;
+        min-height: 45px;
+    }
+
+    #form-navigation {
+        padding: 10px 15px 20px;
+        flex-direction: column-reverse;
+        gap: 15px;
+    }
+
+    #form-navigation.result-nav-flex {
+        flex-direction: column-reverse;
+    }
+
+    .plan-actions-top {
+        justify-content: center;
+    }
+
+    .plan-actions-top button,
+    #form-navigation button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+    .main-header {
+        flex-direction: column; 
+        padding: 10px 15px;
+    }
+    
+    .header-logo h1 {
+        font-size: 1.4rem;
+    }
+
+    .header-nav {
+        margin-top: 10px;
+    }
+
+    .history-link {
+        font-size: 0.95rem;
+        padding: 8px 12px;
+        width: 100%;
+        justify-content: center;
+    }
+}
+}
